@@ -213,6 +213,14 @@ public class ItemTagsCoFH {
     public static final IOptionalNamedTag<Item> STORAGE_BLOCKS_TAR = forgeTag("storage_blocks/tar");
     public static final IOptionalNamedTag<Item> STORAGE_BLOCKS_TIN = forgeTag("storage_blocks/tin");
 
+    public static final IOptionalNamedTag<Item> ARMOR_IRON = forgeTag("armor/iron");
+    public static final IOptionalNamedTag<Item> ARMOR_GOLD = forgeTag("armor/gold");
+    public static final IOptionalNamedTag<Item> ARMOR_DIAMOND = forgeTag("armor/diamond");
+    
+    public static final IOptionalNamedTag<Item> TOOLS_IRON = forgeTag("tools/iron");
+    public static final IOptionalNamedTag<Item> TOOLS_GOLD = forgeTag("tools/gold");
+    public static final IOptionalNamedTag<Item> TOOLS_DIAMOND = forgeTag("tools/diamond");
+
     public static final IOptionalNamedTag<Item> TOOLS_WRENCH = forgeTag("tools/wrench");
 
     public static final IOptionalNamedTag<Item> BITUMEN = forgeTag("bitumen");

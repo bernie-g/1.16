@@ -3,10 +3,8 @@ package cofh.thermal.core.fluid;
 import cofh.lib.fluid.FluidCoFH;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.lib.common.ThermalItemGroups;
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FlowingFluidBlock;
-import net.minecraft.block.material.Material;
 import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.item.BucketItem;
 import net.minecraft.item.Item;
@@ -22,15 +20,17 @@ import net.minecraftforge.fluids.ForgeFlowingFluid;
 
 import java.util.function.Supplier;
 
-import static cofh.thermal.core.ThermalCore.*;
+import static cofh.thermal.core.ThermalCore.FLUIDS;
+import static cofh.thermal.core.ThermalCore.ITEMS;
+import static cofh.thermal.core.init.TCoreIDs.ID_FLUID_REDSTONE;
 
 public class RedstoneFluid extends FluidCoFH {
 
     protected static boolean signal = true;
 
-    public static RedstoneFluid create(String key) {
+    public static RedstoneFluid create() {
 
-        return new RedstoneFluid(key, "thermal:block/fluids/redstone_still", "thermal:block/fluids/redstone_flow");
+        return new RedstoneFluid(ID_FLUID_REDSTONE, "thermal:block/fluids/redstone_still", "thermal:block/fluids/redstone_flow");
     }
 
     protected RedstoneFluid(String key, String stillTexture, String flowTexture) {
@@ -38,8 +38,8 @@ public class RedstoneFluid extends FluidCoFH {
         stillFluid = FLUIDS.register(key, () -> new ForgeFlowingFluid.Source(properties));
         flowingFluid = FLUIDS.register(flowing(key), () -> new ForgeFlowingFluid.Flowing(properties));
 
-        block = BLOCKS.register(key, () -> new RedstoneFluidBlock(stillFluid, AbstractBlock.Properties.create(Material.WATER).doesNotBlockMovement().hardnessAndResistance(100.0F).noDrops()));
-        bucket = ITEMS.register(bucket(key), () -> new BucketItem(stillFluid, new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ThermalItemGroups.THERMAL_TOOLS).rarity(Rarity.UNCOMMON)));
+        // block = BLOCKS.register(key, () -> new RedstoneFluidBlock(stillFluid, AbstractBlock.Properties.create(Material.WATER).doesNotBlockMovement().hardnessAndResistance(100.0F).noDrops()));
+        bucket = ITEMS.register(bucket(key), () -> new BucketItem(stillFluid, new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ThermalItemGroups.THERMAL_ITEMS).rarity(Rarity.UNCOMMON)));
 
         properties = new ForgeFlowingFluid.Properties(stillFluid, flowingFluid, FluidAttributes.builder(new ResourceLocation(stillTexture), new ResourceLocation(flowTexture))
                 .luminosity(7)
@@ -47,7 +47,7 @@ public class RedstoneFluid extends FluidCoFH {
                 .viscosity(1500)
                 .rarity(Rarity.UNCOMMON)
                 .sound(SoundEvents.ITEM_BUCKET_FILL, SoundEvents.ITEM_BUCKET_EMPTY)
-        ).bucket(bucket).block(block);
+        ).bucket(bucket);//.block(block);
     }
 
     public static class RedstoneFluidBlock extends FlowingFluidBlock {

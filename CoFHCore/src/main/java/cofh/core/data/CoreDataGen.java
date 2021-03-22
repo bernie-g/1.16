@@ -30,6 +30,10 @@ public class CoreDataGen {
         DataGenerator gen = event.getGenerator();
         ExistingFileHelper exFileHelper = event.getExistingFileHelper();
 
+        CoreTagsProvider.Block blockTags = new CoreTagsProvider.Block(gen, exFileHelper);
+
+        gen.addProvider(blockTags);
+        gen.addProvider(new CoreTagsProvider.Item(gen, blockTags, exFileHelper));
         gen.addProvider(new CoreTagsProvider.Fluid(gen, exFileHelper));
 
         gen.addProvider(new CoreLootTableProvider(gen));

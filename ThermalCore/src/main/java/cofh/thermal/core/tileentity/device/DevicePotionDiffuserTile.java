@@ -123,7 +123,6 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
         if (curFluid != renderFluid.getFluid()) {
             TileStatePacket.sendToClient(this);
         }
-
     }
 
     @Nonnull

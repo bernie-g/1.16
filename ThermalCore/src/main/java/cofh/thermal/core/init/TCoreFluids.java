@@ -10,9 +10,9 @@ public class TCoreFluids {
 
     public static void register() {
 
-        //        RedstoneFluid.create("redstone_fluid");
-        //        GlowstoneFluid.create("glowstone_fluid");
-        //        EnderFluid.create("ender_fluid");
+        RedstoneFluid.create();
+        GlowstoneFluid.create();
+        EnderFluid.create();
 
         SapFluid.create();
         SyrupFluid.create();
