@@ -6,9 +6,7 @@ import cofh.thermal.expansion.util.recipes.machine.InsolatorRecipe;
 import cofh.thermal.lib.util.managers.SingleItemRecipeManager;
 import cofh.thermal.lib.util.recipes.IMachineInventory;
 import cofh.thermal.lib.util.recipes.ThermalCatalyst;
-import cofh.thermal.lib.util.recipes.internal.CatalyzedMachineRecipe;
-import cofh.thermal.lib.util.recipes.internal.IMachineRecipe;
-import cofh.thermal.lib.util.recipes.internal.IRecipeCatalyst;
+import cofh.thermal.lib.util.recipes.internal.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.RecipeManager;
@@ -47,7 +45,7 @@ public class InsolatorRecipeManager extends SingleItemRecipeManager.Catalyzed {
 
     // region RECIPES
     @Override
-    protected IMachineRecipe addRecipe(int energy, float experience, List<ItemStack> inputItems, List<FluidStack> inputFluids, List<ItemStack> outputItems, List<Float> chance, List<FluidStack> outputFluids) {
+    protected IMachineRecipe addRecipe(int energy, float experience, List<ItemStack> inputItems, List<FluidStack> inputFluids, List<ItemStack> outputItems, List<Float> chance, List<FluidStack> outputFluids, BaseMachineRecipe.RecipeType type) {
 
         if (inputItems.isEmpty() || outputItems.isEmpty() && outputFluids.isEmpty() || outputItems.size() > maxOutputItems || outputFluids.size() > maxOutputFluids || energy <= 0) {
             return null;
@@ -68,7 +66,12 @@ public class InsolatorRecipeManager extends SingleItemRecipeManager.Catalyzed {
         }
         energy = (int) (energy * getDefaultScale());
 
-        InternalInsolatorRecipe recipe = new InternalInsolatorRecipe(energy, experience, inputItems, inputFluids, outputItems, chance, outputFluids);
+        IMachineRecipe recipe;
+        if (type == BaseMachineRecipe.RecipeType.DISENCHANT) {
+            recipe = new DisenchantMachineRecipe(energy, experience, inputItems, inputFluids, outputItems, chance, outputFluids);
+        } else {
+            recipe = new InternalInsolatorRecipe(energy, experience, inputItems, inputFluids, outputItems, chance, outputFluids);
+        }
         recipeMap.put(convert(input), recipe);
         return recipe;
     }

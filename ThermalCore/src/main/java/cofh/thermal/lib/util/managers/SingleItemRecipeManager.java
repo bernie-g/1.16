@@ -7,10 +7,7 @@ import cofh.lib.util.ComparableItemStack;
 import cofh.thermal.lib.util.recipes.IThermalInventory;
 import cofh.thermal.lib.util.recipes.ThermalCatalyst;
 import cofh.thermal.lib.util.recipes.ThermalRecipe;
-import cofh.thermal.lib.util.recipes.internal.BaseMachineCatalyst;
-import cofh.thermal.lib.util.recipes.internal.IMachineRecipe;
-import cofh.thermal.lib.util.recipes.internal.IRecipeCatalyst;
-import cofh.thermal.lib.util.recipes.internal.SimpleMachineRecipe;
+import cofh.thermal.lib.util.recipes.internal.*;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
@@ -37,10 +34,15 @@ public abstract class SingleItemRecipeManager extends AbstractManager implements
         this.maxOutputFluids = maxOutputFluids;
     }
 
-    public void addRecipe(ThermalRecipe recipe) {
+    public final void addRecipe(ThermalRecipe recipe) {
+
+        addRecipe(recipe, BaseMachineRecipe.RecipeType.STANDARD);
+    }
+
+    public void addRecipe(ThermalRecipe recipe, BaseMachineRecipe.RecipeType type) {
 
         for (ItemStack recipeInput : recipe.getInputItems().get(0).getMatchingStacks()) {
-            addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(recipeInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+            addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(recipeInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids(), type);
         }
     }
 
@@ -67,7 +69,7 @@ public abstract class SingleItemRecipeManager extends AbstractManager implements
         return recipeMap.get(convert(inputSlots.get(0).getItemStack()));
     }
 
-    protected IMachineRecipe addRecipe(int energy, float experience, List<ItemStack> inputItems, List<FluidStack> inputFluids, List<ItemStack> outputItems, List<Float> chance, List<FluidStack> outputFluids) {
+    protected IMachineRecipe addRecipe(int energy, float experience, List<ItemStack> inputItems, List<FluidStack> inputFluids, List<ItemStack> outputItems, List<Float> chance, List<FluidStack> outputFluids, BaseMachineRecipe.RecipeType type) {
 
         if (inputItems.isEmpty() || outputItems.isEmpty() && outputFluids.isEmpty() || outputItems.size() > maxOutputItems || outputFluids.size() > maxOutputFluids || energy <= 0) {
             return null;
@@ -88,7 +90,12 @@ public abstract class SingleItemRecipeManager extends AbstractManager implements
         }
         energy = (int) (energy * getDefaultScale());
 
-        SimpleMachineRecipe recipe = new SimpleMachineRecipe(energy, experience, inputItems, inputFluids, outputItems, chance, outputFluids);
+        IMachineRecipe recipe;
+        if (type == BaseMachineRecipe.RecipeType.DISENCHANT) {
+            recipe = new DisenchantMachineRecipe(energy, experience, inputItems, inputFluids, outputItems, chance, outputFluids);
+        } else {
+            recipe = new SimpleMachineRecipe(energy, experience, inputItems, inputFluids, outputItems, chance, outputFluids);
+        }
         recipeMap.put(convert(input), recipe);
         return recipe;
     }

@@ -10,10 +10,7 @@ import cofh.thermal.lib.util.managers.IRecipeManager;
 import cofh.thermal.lib.util.recipes.IThermalInventory;
 import cofh.thermal.lib.util.recipes.ThermalCatalyst;
 import cofh.thermal.lib.util.recipes.ThermalRecipe;
-import cofh.thermal.lib.util.recipes.internal.BaseMachineCatalyst;
-import cofh.thermal.lib.util.recipes.internal.CatalyzedMachineRecipe;
-import cofh.thermal.lib.util.recipes.internal.IMachineRecipe;
-import cofh.thermal.lib.util.recipes.internal.IRecipeCatalyst;
+import cofh.thermal.lib.util.recipes.internal.*;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.item.ItemStack;
@@ -53,18 +50,18 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
         this.maxOutputFluids = 0;
     }
 
-    public void addRecipe(ThermalRecipe recipe) {
+    public void addRecipe(ThermalRecipe recipe, BaseMachineRecipe.RecipeType type) {
 
         switch (recipe.getInputItems().size()) {
             case 1:
                 for (ItemStack firstInput : recipe.getInputItems().get(0).getMatchingStacks()) {
-                    addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(firstInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+                    addRecipe(recipe.getEnergy(), recipe.getXp(), Collections.singletonList(firstInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids(), type);
                 }
                 return;
             case 2:
                 for (ItemStack firstInput : recipe.getInputItems().get(0).getMatchingStacks()) {
                     for (ItemStack secondInput : recipe.getInputItems().get(1).getMatchingStacks()) {
-                        addRecipe(recipe.getEnergy(), recipe.getXp(), asList(firstInput, secondInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+                        addRecipe(recipe.getEnergy(), recipe.getXp(), asList(firstInput, secondInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids(), type);
                     }
                 }
                 return;
@@ -72,7 +69,7 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
                 for (ItemStack firstInput : recipe.getInputItems().get(0).getMatchingStacks()) {
                     for (ItemStack secondInput : recipe.getInputItems().get(1).getMatchingStacks()) {
                         for (ItemStack thirdInput : recipe.getInputItems().get(2).getMatchingStacks()) {
-                            addRecipe(recipe.getEnergy(), recipe.getXp(), asList(firstInput, secondInput, thirdInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids());
+                            addRecipe(recipe.getEnergy(), recipe.getXp(), asList(firstInput, secondInput, thirdInput), recipe.getInputFluids(), recipe.getOutputItems(), recipe.getOutputItemChances(), recipe.getOutputFluids(), type);
                         }
                     }
                 }
@@ -112,7 +109,7 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
         return recipeMap.get(new SmelterMapWrapper(convertedItems));
     }
 
-    protected IMachineRecipe addRecipe(int energy, float experience, List<ItemStack> inputItems, List<FluidStack> inputFluids, List<ItemStack> outputItems, List<Float> chance, List<FluidStack> outputFluids) {
+    protected IMachineRecipe addRecipe(int energy, float experience, List<ItemStack> inputItems, List<FluidStack> inputFluids, List<ItemStack> outputItems, List<Float> chance, List<FluidStack> outputFluids, BaseMachineRecipe.RecipeType type) {
 
         if (inputItems.isEmpty() || outputItems.isEmpty() && outputFluids.isEmpty() || outputItems.size() > maxOutputItems || outputFluids.size() > maxOutputFluids || energy <= 0) {
             return null;
@@ -142,7 +139,12 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
                 convertedItems.add(compStack);
             }
         }
-        InternalSmelterRecipe recipe = new InternalSmelterRecipe(energy, experience, inputItems, inputFluids, outputItems, chance, outputFluids);
+        IMachineRecipe recipe;
+        if (type == BaseMachineRecipe.RecipeType.DISENCHANT) {
+            recipe = new DisenchantMachineRecipe(energy, experience, inputItems, inputFluids, outputItems, chance, outputFluids);
+        } else {
+            recipe = new InternalSmelterRecipe(energy, experience, inputItems, inputFluids, outputItems, chance, outputFluids);
+        }
         recipeMap.put(new SmelterMapWrapper(convertedItems), recipe);
         return recipe;
     }
@@ -220,7 +222,11 @@ public class SmelterRecipeManager extends AbstractManager implements IRecipeMana
         clear();
         Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.getRecipes(TExpRecipeTypes.RECIPE_SMELTER);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
-            addRecipe((ThermalRecipe) entry.getValue());
+            addRecipe((ThermalRecipe) entry.getValue(), BaseMachineRecipe.RecipeType.CATALYZED);
+        }
+        Map<ResourceLocation, IRecipe<FalseIInventory>> recycle = recipeManager.getRecipes(TExpRecipeTypes.RECIPE_SMELTER_RECYCLE);
+        for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recycle.entrySet()) {
+            addRecipe((ThermalRecipe) entry.getValue(), BaseMachineRecipe.RecipeType.DISENCHANT);
         }
         Map<ResourceLocation, IRecipe<FalseIInventory>> catalysts = recipeManager.getRecipes(TExpRecipeTypes.CATALYST_SMELTER);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : catalysts.entrySet()) {

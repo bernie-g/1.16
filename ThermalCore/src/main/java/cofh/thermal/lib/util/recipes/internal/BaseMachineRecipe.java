@@ -71,6 +71,12 @@ public class BaseMachineRecipe implements IMachineRecipe {
         ((ArrayList<Float>) this.outputItemChances).trimToSize();
     }
 
+    public enum RecipeType {
+        STANDARD,
+        CATALYZED,
+        DISENCHANT
+    }
+
     // region IMachineRecipe
     @Override
     public List<ItemStack> getInputItems() {

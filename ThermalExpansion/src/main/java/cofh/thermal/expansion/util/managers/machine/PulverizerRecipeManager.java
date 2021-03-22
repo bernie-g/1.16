@@ -5,9 +5,7 @@ import cofh.thermal.expansion.init.TExpRecipeTypes;
 import cofh.thermal.lib.util.managers.SingleItemRecipeManager;
 import cofh.thermal.lib.util.recipes.ThermalCatalyst;
 import cofh.thermal.lib.util.recipes.ThermalRecipe;
-import cofh.thermal.lib.util.recipes.internal.CatalyzedMachineRecipe;
-import cofh.thermal.lib.util.recipes.internal.IMachineRecipe;
-import cofh.thermal.lib.util.recipes.internal.IRecipeCatalyst;
+import cofh.thermal.lib.util.recipes.internal.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.RecipeManager;
@@ -35,7 +33,7 @@ public class PulverizerRecipeManager extends SingleItemRecipeManager.Catalyzed {
 
     // region RECIPES
     @Override
-    protected IMachineRecipe addRecipe(int energy, float experience, List<ItemStack> inputItems, List<FluidStack> inputFluids, List<ItemStack> outputItems, List<Float> chance, List<FluidStack> outputFluids) {
+    protected IMachineRecipe addRecipe(int energy, float experience, List<ItemStack> inputItems, List<FluidStack> inputFluids, List<ItemStack> outputItems, List<Float> chance, List<FluidStack> outputFluids, BaseMachineRecipe.RecipeType type) {
 
         if (inputItems.isEmpty() || outputItems.isEmpty() && outputFluids.isEmpty() || outputItems.size() > maxOutputItems || outputFluids.size() > maxOutputFluids || energy <= 0) {
             return null;
@@ -56,7 +54,12 @@ public class PulverizerRecipeManager extends SingleItemRecipeManager.Catalyzed {
         }
         energy = (int) (energy * getDefaultScale());
 
-        InternalPulverizerRecipe recipe = new InternalPulverizerRecipe(energy, experience, inputItems, inputFluids, outputItems, chance, outputFluids);
+        IMachineRecipe recipe;
+        if (type == BaseMachineRecipe.RecipeType.DISENCHANT) {
+            recipe = new DisenchantMachineRecipe(energy, experience, inputItems, inputFluids, outputItems, chance, outputFluids);
+        } else {
+            recipe = new InternalPulverizerRecipe(energy, experience, inputItems, inputFluids, outputItems, chance, outputFluids);
+        }
         recipeMap.put(convert(input), recipe);
         return recipe;
     }
@@ -75,6 +78,10 @@ public class PulverizerRecipeManager extends SingleItemRecipeManager.Catalyzed {
         Map<ResourceLocation, IRecipe<FalseIInventory>> recipes = recipeManager.getRecipes(TExpRecipeTypes.RECIPE_PULVERIZER);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recipes.entrySet()) {
             addRecipe((ThermalRecipe) entry.getValue());
+        }
+        Map<ResourceLocation, IRecipe<FalseIInventory>> recycle = recipeManager.getRecipes(TExpRecipeTypes.RECIPE_PULVERIZER_RECYCLE);
+        for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : recycle.entrySet()) {
+            addRecipe((ThermalRecipe) entry.getValue(), BaseMachineRecipe.RecipeType.DISENCHANT);
         }
         Map<ResourceLocation, IRecipe<FalseIInventory>> catalysts = recipeManager.getRecipes(TExpRecipeTypes.CATALYST_PULVERIZER);
         for (Map.Entry<ResourceLocation, IRecipe<FalseIInventory>> entry : catalysts.entrySet()) {

@@ -42,9 +42,11 @@ public class TExpJeiPlugin implements IModPlugin {
         registration.addRecipes(recipeManager.getRecipes(RECIPE_SAWMILL).values(), ID_RECIPE_SAWMILL);
 
         registration.addRecipes(recipeManager.getRecipes(RECIPE_PULVERIZER).values(), ID_RECIPE_PULVERIZER);
+        registration.addRecipes(recipeManager.getRecipes(RECIPE_PULVERIZER_RECYCLE).values(), ID_RECIPE_PULVERIZER);
         registration.addRecipes(recipeManager.getRecipes(CATALYST_PULVERIZER).values(), ID_CATALYST_PULVERIZER);
 
         registration.addRecipes(recipeManager.getRecipes(RECIPE_SMELTER).values(), ID_RECIPE_SMELTER);
+        registration.addRecipes(recipeManager.getRecipes(RECIPE_SMELTER_RECYCLE).values(), ID_RECIPE_SMELTER);
         registration.addRecipes(recipeManager.getRecipes(CATALYST_SMELTER).values(), ID_CATALYST_SMELTER);
 
         registration.addRecipes(recipeManager.getRecipes(RECIPE_INSOLATOR).values(), ID_RECIPE_INSOLATOR);

@@ -1,5 +1,5 @@
 {
-  "type": "thermal:pulverizer",
+  "type": "thermal:pulverizer_recycle",
   "ingredient": {
     "tag": "forge:armor/diamond"
   },
