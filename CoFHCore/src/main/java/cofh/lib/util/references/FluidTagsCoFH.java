@@ -10,9 +10,9 @@ import static cofh.lib.util.constants.Constants.ID_THERMAL;
 
 public class FluidTagsCoFH {
 
+    public static final IOptionalNamedTag<Fluid> EXPERIENCE = forgeTag("experience");
     public static final IOptionalNamedTag<Fluid> HONEY = forgeTag("honey");
     public static final IOptionalNamedTag<Fluid> POTION = forgeTag("potion");
-    public static final IOptionalNamedTag<Fluid> XP = forgeTag("xp");
 
     public static final IOptionalNamedTag<Fluid> LATEX = forgeTag("latex");
 

@@ -5,6 +5,7 @@ import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.util.helpers.BlockHelper;
 import cofh.lib.util.helpers.ItemHelper;
 import cofh.lib.util.references.CoreReferences;
+import cofh.lib.util.references.FluidTagsCoFH;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -39,6 +40,7 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 import static cofh.lib.util.constants.Constants.BOTTLE_VOLUME;
+import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.NBTTags.TAG_POTION;
 import static cofh.lib.util.references.CoreReferences.FLUID_HONEY;
 import static cofh.lib.util.references.CoreReferences.FLUID_XP;
@@ -192,7 +194,6 @@ public class FluidHelper {
     // endregion
 
     // region CAPABILITY HELPERS
-
     public static boolean hasFluidHandlerCap(ItemStack item) {
 
         return !item.isEmpty() && item.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY).isPresent();
@@ -259,12 +260,27 @@ public class FluidHelper {
 
         if (fluid.getFluid() == Fluids.WATER || hasPotionTag(fluid)) {
             bottle = PotionUtils.addPotionToItemStack(new ItemStack(Items.POTION), getPotionFromFluid(fluid));
-        } else if (fluid.getFluid() == FLUID_HONEY) { // TODO: Tags
+        } else if (fluid.getFluid().isIn(FluidTagsCoFH.HONEY)) {
             bottle = new ItemStack(Items.HONEY_BOTTLE);
-        } else if (fluid.getFluid() == FLUID_XP) {
+        } else if (fluid.getFluid().isIn(FluidTagsCoFH.EXPERIENCE)) {
             bottle = new ItemStack(Items.EXPERIENCE_BOTTLE);
         }
         return !bottle.isEmpty() && addFilledBottleToPlayer(stack, bottle, handler, player, hand);
+    }
+
+    /**
+     * This basically ensures that a given fluid HAS a bucket, if the ItemStack being used is a bucket.
+     */
+    public static boolean bucketFillTest(ItemStack stack, IFluidHandler handler) {
+
+        if (stack.getItem() != Items.BUCKET) {
+            return true;
+        }
+        FluidStack fluid = handler.drain(BUCKET_VOLUME, SIMULATE);
+        if (fluid.getAmount() != BUCKET_VOLUME) {
+            return false;
+        }
+        return fluid.getFluid().getFilledBucket() != Items.AIR;
     }
 
     private static boolean addFilledBottleToPlayer(ItemStack stack, ItemStack bottle, IFluidHandler handler, PlayerEntity player, Hand hand) {
@@ -319,7 +335,7 @@ public class FluidHelper {
      */
     public static boolean fillItemFromHandler(ItemStack stack, IFluidHandler handler, PlayerEntity player, Hand hand) {
 
-        if (stack.isEmpty() || handler == null || player == null) {
+        if (stack.isEmpty() || handler == null || player == null || !bucketFillTest(stack, handler)) {
             return false;
         }
         if (fillBottleFromHandler(stack, handler, player, hand)) {

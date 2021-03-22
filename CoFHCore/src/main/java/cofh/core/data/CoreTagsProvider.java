@@ -115,7 +115,7 @@ public class CoreTagsProvider {
 
             getOrCreateBuilder(FluidTagsCoFH.HONEY).add(FLUIDS.get(ID_FLUID_HONEY));
             getOrCreateBuilder(FluidTagsCoFH.POTION).add(FLUIDS.get(ID_FLUID_POTION));
-            getOrCreateBuilder(FluidTagsCoFH.XP).add(FLUIDS.get(ID_FLUID_XP));
+            getOrCreateBuilder(FluidTagsCoFH.EXPERIENCE).add(FLUIDS.get(ID_FLUID_XP));
         }
 
     }
