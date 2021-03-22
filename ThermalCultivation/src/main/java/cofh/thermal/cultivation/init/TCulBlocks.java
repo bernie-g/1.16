@@ -1,7 +1,5 @@
 package cofh.thermal.cultivation.init;
 
-import cofh.core.block.TileBlockActive4Way;
-import cofh.core.util.ProxyUtils;
 import cofh.lib.block.impl.CakeBlockCoFH;
 import cofh.lib.block.impl.DirectionalBlock4Way;
 import cofh.lib.block.impl.SoilBlock;
@@ -9,27 +7,17 @@ import cofh.lib.block.impl.TilledSoilBlock;
 import cofh.lib.block.impl.crops.AttachedStemBlockCoFH;
 import cofh.lib.block.impl.crops.StemBlockCoFH;
 import cofh.thermal.cultivation.block.FrostMelonBlock;
-import cofh.thermal.cultivation.inventory.container.device.DeviceSoilInfuserContainer;
-import cofh.thermal.cultivation.tileentity.DeviceSoilInfuserTile;
-import cofh.thermal.lib.common.ThermalConfig;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.Rarity;
-import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.common.ToolType;
-import net.minecraftforge.common.extensions.IForgeContainerType;
 
-import java.util.function.IntSupplier;
-
-import static cofh.lib.util.constants.Constants.ACTIVE;
 import static cofh.lib.util.constants.Constants.CHARGED;
-import static cofh.lib.util.helpers.BlockHelper.lightValue;
-import static cofh.thermal.core.ThermalCore.*;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
+import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.util.RegistrationHelper.*;
 import static cofh.thermal.cultivation.init.TCulIDs.*;
-import static cofh.thermal.cultivation.init.TCulReferences.DEVICE_SOIL_INFUSER_BLOCK;
-import static cofh.thermal.lib.common.ThermalAugmentRules.DEVICE_VALIDATOR;
 import static net.minecraft.block.AbstractBlock.Properties.create;
 
 public class TCulBlocks {
@@ -44,10 +32,6 @@ public class TCulBlocks {
         registerFoods();
         registerStorage();
         registerMisc();
-
-        registerTileBlocks();
-        registerTileContainers();
-        registerTileEntities();
     }
 
     public static void setup() {
@@ -121,23 +105,6 @@ public class TCulBlocks {
 
         registerBlock(ID_PHYTOSOIL, () -> new SoilBlock(create(Material.EARTH).tickRandomly().hardnessAndResistance(0.8F).harvestTool(ToolType.SHOVEL).sound(SoundType.GROUND).setLightLevel((state) -> state.get(CHARGED) > 0 ? 7 : 0)));
         registerBlock(ID_PHYTOSOIL_TILLED, () -> new TilledSoilBlock(create(Material.EARTH).tickRandomly().hardnessAndResistance(0.8F).harvestTool(ToolType.SHOVEL).sound(SoundType.GROUND).setLightLevel((state) -> state.get(CHARGED) > 0 ? 7 : 0)).dirt(BLOCKS.getSup(ID_PHYTOSOIL)));
-    }
-
-    private static void registerTileBlocks() {
-
-        IntSupplier deviceAugs = () -> ThermalConfig.deviceAugments;
-
-        registerAugBlock(ID_DEVICE_SOIL_INFUSER, () -> new TileBlockActive4Way(create(Material.WOOD).sound(SoundType.SCAFFOLDING).hardnessAndResistance(2.5F).harvestTool(ToolType.AXE).setLightLevel(lightValue(ACTIVE, 10)), DeviceSoilInfuserTile::new), deviceAugs, DEVICE_VALIDATOR);
-    }
-
-    private static void registerTileContainers() {
-
-        CONTAINERS.register(ID_DEVICE_SOIL_INFUSER, () -> IForgeContainerType.create((windowId, inv, data) -> new DeviceSoilInfuserContainer(windowId, ProxyUtils.getClientWorld(), data.readBlockPos(), inv, ProxyUtils.getClientPlayer())));
-    }
-
-    private static void registerTileEntities() {
-
-        TILE_ENTITIES.register(ID_DEVICE_SOIL_INFUSER, () -> TileEntityType.Builder.create(DeviceSoilInfuserTile::new, DEVICE_SOIL_INFUSER_BLOCK).build(null));
     }
     // endregion
 }

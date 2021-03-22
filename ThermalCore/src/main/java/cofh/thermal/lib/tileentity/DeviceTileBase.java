@@ -12,12 +12,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Map;
+import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 import static cofh.lib.util.constants.Constants.ACTIVE;
 import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_BASE_MOD;
 import static cofh.lib.util.helpers.AugmentableHelper.getAttributeModWithDefault;
+import static cofh.thermal.lib.common.ThermalAugmentRules.DEVICE_NO_FLUID_VALIDATOR;
 import static cofh.thermal.lib.common.ThermalAugmentRules.DEVICE_VALIDATOR;
 
 public abstract class DeviceTileBase extends ThermalTileBase {
@@ -76,7 +79,8 @@ public abstract class DeviceTileBase extends ThermalTileBase {
     @Override
     protected Predicate<ItemStack> augValidator() {
 
-        return item -> AugmentDataHelper.hasAugmentData(item) && DEVICE_VALIDATOR.test(item, getAugmentsAsList());
+        BiPredicate<ItemStack, List<ItemStack>> validator = tankInv.hasTanks() ? DEVICE_VALIDATOR : DEVICE_NO_FLUID_VALIDATOR;
+        return item -> AugmentDataHelper.hasAugmentData(item) && validator.test(item, getAugmentsAsList());
     }
 
     @Override

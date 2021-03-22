@@ -216,7 +216,7 @@ public class ItemTagsCoFH {
     public static final IOptionalNamedTag<Item> ARMOR_IRON = forgeTag("armor/iron");
     public static final IOptionalNamedTag<Item> ARMOR_GOLD = forgeTag("armor/gold");
     public static final IOptionalNamedTag<Item> ARMOR_DIAMOND = forgeTag("armor/diamond");
-    
+
     public static final IOptionalNamedTag<Item> TOOLS_IRON = forgeTag("tools/iron");
     public static final IOptionalNamedTag<Item> TOOLS_GOLD = forgeTag("tools/gold");
     public static final IOptionalNamedTag<Item> TOOLS_DIAMOND = forgeTag("tools/diamond");

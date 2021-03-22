@@ -1,17 +1,20 @@
-package cofh.thermal.cultivation.tileentity;
+package cofh.thermal.core.tileentity.device;
 
 import cofh.core.util.helpers.EnergyHelper;
 import cofh.lib.block.impl.SoilBlock;
 import cofh.lib.energy.EnergyStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.TimeTracker;
-import cofh.thermal.cultivation.inventory.container.device.DeviceSoilInfuserContainer;
+import cofh.lib.util.helpers.AugmentDataHelper;
+import cofh.thermal.core.init.TCoreReferences;
+import cofh.thermal.core.inventory.container.device.DeviceSoilInfuserContainer;
 import cofh.thermal.lib.tileentity.ThermalTileBase;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -19,16 +22,21 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.energy.CapabilityEnergy;
 
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Map;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
 import static cofh.lib.util.StorageGroup.INTERNAL;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.lib.util.helpers.AugmentableHelper.getAttributeModWithDefault;
-import static cofh.thermal.cultivation.init.TCulReferences.DEVICE_SOIL_INFUSER_TILE;
+import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 
 public class DeviceSoilInfuserTile extends ThermalTileBase implements ITickableTileEntity {
+
+    public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_RF, TAG_AUGMENT_TYPE_AREA_EFFECT);
 
     protected static final int BASE_PROCESS_MAX = 4000;
 
@@ -43,7 +51,7 @@ public class DeviceSoilInfuserTile extends ThermalTileBase implements ITickableT
 
     public DeviceSoilInfuserTile() {
 
-        super(DEVICE_SOIL_INFUSER_TILE);
+        super(TCoreReferences.DEVICE_SOIL_INFUSER_TILE);
         timeTracker = new TimeTracker();
         energyStorage = new EnergyStorageCoFH(getBaseEnergyStorage(), getBaseEnergyXfer());
 
@@ -173,6 +181,12 @@ public class DeviceSoilInfuserTile extends ThermalTileBase implements ITickableT
     // endregion
 
     // region AUGMENTS
+    @Override
+    protected Predicate<ItemStack> augValidator() {
+
+        return item -> AugmentDataHelper.hasAugmentData(item) && AUG_VALIDATOR.test(item, getAugmentsAsList());
+    }
+
     @Override
     protected void resetAttributes() {
 

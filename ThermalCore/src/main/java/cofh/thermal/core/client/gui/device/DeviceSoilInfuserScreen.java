@@ -1,10 +1,11 @@
-package cofh.thermal.cultivation.client.gui.device;
+package cofh.thermal.core.client.gui.device;
 
 import cofh.core.client.gui.element.ElementScaled;
+import cofh.core.util.helpers.GuiHelper;
 import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
-import cofh.thermal.cultivation.inventory.container.device.DeviceSoilInfuserContainer;
-import cofh.thermal.cultivation.tileentity.DeviceSoilInfuserTile;
+import cofh.thermal.core.inventory.container.device.DeviceSoilInfuserContainer;
+import cofh.thermal.core.tileentity.device.DeviceSoilInfuserTile;
 import cofh.thermal.lib.client.gui.ThermalTileScreenBase;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
@@ -38,7 +39,7 @@ public class DeviceSoilInfuserScreen extends ThermalTileScreenBase<DeviceSoilInf
 
         if (tile.getEnergyStorage() != null && tile.getEnergyStorage().getMaxEnergyStored() > 0) {
             addPanel(ThermalGuiHelper.createDefaultEnergyUserPanel(this, tile));
-            addElement(setClearable(createDefaultEnergyStorage(this, 8, 8, tile.getEnergyStorage()), tile, 0));
+            addElement(GuiHelper.setClearable(createDefaultEnergyStorage(this, 8, 8, tile.getEnergyStorage()), tile, 0));
         }
         addElement(new ElementScaled(this, 44, 34)
                 .setQuantity(() -> tile.getScaledProgress(16))

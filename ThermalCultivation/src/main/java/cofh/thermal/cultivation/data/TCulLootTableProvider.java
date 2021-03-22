@@ -97,8 +97,6 @@ public class TCulLootTableProvider extends LootTableProviderCoFH {
 
         lootTables.put(regBlocks.get(ID_CHOCOLATE_CAKE), getEmptyTable());
         lootTables.put(regBlocks.get(ID_SPICE_CAKE), getEmptyTable());
-
-        createSyncDropTable(regBlocks.get(ID_DEVICE_SOIL_INFUSER));
     }
 
     protected void createCropTable(String id) {

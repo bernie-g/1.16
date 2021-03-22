@@ -145,6 +145,7 @@ public class ThermalCore {
 
         ScreenManager.registerFactory(DEVICE_HIVE_EXTRACTOR_CONTAINER, DeviceHiveExtractorScreen::new);
         ScreenManager.registerFactory(DEVICE_TREE_EXTRACTOR_CONTAINER, DeviceTreeExtractorScreen::new);
+        ScreenManager.registerFactory(DEVICE_SOIL_INFUSER_CONTAINER, DeviceSoilInfuserScreen::new);
         ScreenManager.registerFactory(DEVICE_WATER_GEN_CONTAINER, DeviceWaterGenScreen::new);
         ScreenManager.registerFactory(DEVICE_ROCK_GEN_CONTAINER, DeviceRockGenScreen::new);
         ScreenManager.registerFactory(DEVICE_COLLECTOR_CONTAINER, DeviceCollectorScreen::new);

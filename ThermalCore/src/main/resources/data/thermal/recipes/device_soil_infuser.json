@@ -24,5 +24,11 @@
   },
   "result": {
     "item": "thermal:device_soil_infuser"
-  }
+  },
+  "conditions": [
+    {
+      "flag": "device_soil_infuser",
+      "type": "thermal:flag"
+    }
+  ]
 }

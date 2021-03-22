@@ -103,6 +103,7 @@ public class TCoreIDs {
     // region DEVICES
     public static final String ID_DEVICE_HIVE_EXTRACTOR = "device_hive_extractor";
     public static final String ID_DEVICE_TREE_EXTRACTOR = "device_tree_extractor";
+    public static final String ID_DEVICE_SOIL_INFUSER = "device_soil_infuser";
     public static final String ID_DEVICE_WATER_GEN = "device_water_gen";
     public static final String ID_DEVICE_ROCK_GEN = "device_rock_gen";
     public static final String ID_DEVICE_COLLECTOR = "device_collector";

@@ -1,11 +1,9 @@
 package cofh.thermal.cultivation;
 
-import cofh.thermal.cultivation.client.gui.device.DeviceSoilInfuserScreen;
 import cofh.thermal.cultivation.init.TCulBlocks;
 import cofh.thermal.cultivation.init.TCulItems;
 import cofh.thermal.cultivation.loot.GrassLootModifier;
 import net.minecraft.block.ComposterBlock;
-import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.HoeItem;
@@ -17,11 +15,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL_CULTIVATION;
 import static cofh.thermal.core.ThermalCore.*;
-import static cofh.thermal.core.init.TCoreIDs.ID_DEVICE_HIVE_EXTRACTOR;
-import static cofh.thermal.core.init.TCoreIDs.ID_DEVICE_TREE_EXTRACTOR;
+import static cofh.thermal.core.init.TCoreIDs.*;
 import static cofh.thermal.core.util.RegistrationHelper.seeds;
 import static cofh.thermal.cultivation.init.TCulIDs.*;
-import static cofh.thermal.cultivation.init.TCulReferences.DEVICE_SOIL_INFUSER_CONTAINER;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 
 @Mod(ID_THERMAL_CULTIVATION)
@@ -52,6 +48,7 @@ public class ThermalCultivation {
 
         setFlag(ID_DEVICE_HIVE_EXTRACTOR, true);
         setFlag(ID_DEVICE_TREE_EXTRACTOR, true);
+        setFlag(ID_DEVICE_SOIL_INFUSER, true);
     }
 
     // region INITIALIZATION
@@ -118,17 +115,11 @@ public class ThermalCultivation {
 
     private void clientSetup(final FMLClientSetupEvent event) {
 
-        this.registerGuiFactories();
         this.registerRenderLayers();
     }
     // endregion
 
     // region HELPERS
-    private void registerGuiFactories() {
-
-        ScreenManager.registerFactory(DEVICE_SOIL_INFUSER_CONTAINER, DeviceSoilInfuserScreen::new);
-    }
-
     private void registerRenderLayers() {
 
         RenderType cutout = RenderType.getCutout();

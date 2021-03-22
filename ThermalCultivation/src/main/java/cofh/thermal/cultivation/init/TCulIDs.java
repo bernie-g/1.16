@@ -43,8 +43,4 @@ public class TCulIDs {
     public static final String ID_PHYTOSOIL = "phytosoil";
     public static final String ID_PHYTOSOIL_TILLED = "phytosoil_tilled";
     // endregion
-
-    // region DEVICES
-    public static final String ID_DEVICE_SOIL_INFUSER = "device_soil_infuser";
-    // endregion
 }

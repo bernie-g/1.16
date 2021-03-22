@@ -116,6 +116,13 @@ public class TCoreReferences {
     @ObjectHolder(ID_DEVICE_TREE_EXTRACTOR)
     public static final ContainerType<DeviceTreeExtractorContainer> DEVICE_TREE_EXTRACTOR_CONTAINER = null;
 
+    @ObjectHolder(ID_DEVICE_SOIL_INFUSER)
+    public static final Block DEVICE_SOIL_INFUSER_BLOCK = null;
+    @ObjectHolder(ID_DEVICE_SOIL_INFUSER)
+    public static final TileEntityType<DeviceSoilInfuserTile> DEVICE_SOIL_INFUSER_TILE = null;
+    @ObjectHolder(ID_DEVICE_SOIL_INFUSER)
+    public static final ContainerType<DeviceSoilInfuserContainer> DEVICE_SOIL_INFUSER_CONTAINER = null;
+
     @ObjectHolder(ID_DEVICE_ROCK_GEN)
     public static final Block DEVICE_ROCK_GEN_BLOCK = null;
     @ObjectHolder(ID_DEVICE_ROCK_GEN)
