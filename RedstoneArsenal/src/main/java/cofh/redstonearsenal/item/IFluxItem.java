@@ -1,9 +1,9 @@
 package cofh.redstonearsenal.item;
 
 import cofh.lib.energy.IEnergyContainerItem;
-import cofh.core.item.ICoFHItem;
-import cofh.core.item.IMultiModeItem;
-import cofh.core.util.helpers.MathHelper;
+import cofh.lib.item.ICoFHItem;
+import cofh.lib.item.IMultiModeItem;
+import cofh.lib.util.helpers.MathHelper;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,7 +12,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 
 import static cofh.lib.util.constants.Constants.RGB_DURABILITY_FLUX;
-import static cofh.lib.util.constants.NBTTags.TAG_ENERGY;
 
 public interface IFluxItem extends ICoFHItem, IEnergyContainerItem, IMultiModeItem {
 
@@ -53,7 +52,7 @@ public interface IFluxItem extends ICoFHItem, IEnergyContainerItem, IMultiModeIt
     @Override
     default boolean showDurabilityBar(ItemStack stack) {
 
-        return !isCreative(stack) && getEnergyStored(stack) > 0;
+        return getEnergyStored(stack) > 0;
     }
 
     @Override
@@ -70,46 +69,6 @@ public interface IFluxItem extends ICoFHItem, IEnergyContainerItem, IMultiModeIt
         }
         return MathHelper.clamp(1.0D - getEnergyStored(stack) / (double) getMaxEnergyStored(stack), 0.0D, 1.0D);
     }
-
-    // region IEnergyContainerItem
-    @Override
-    default int receiveEnergy(ItemStack container, int maxReceive, boolean simulate) {
-
-        if (container.getTag() == null) {
-            setDefaultTag(container, 0);
-        }
-        if (isCreative(container)) {
-            return 0;
-        }
-        int stored = Math.min(container.getTag().getInt(TAG_ENERGY), getMaxEnergyStored(container));
-        int receive = Math.min(Math.min(maxReceive, getReceive(container)), getSpace(container));
-
-        if (!simulate) {
-            stored += receive;
-            container.getTag().putInt(TAG_ENERGY, stored);
-        }
-        return receive;
-    }
-
-    @Override
-    default int extractEnergy(ItemStack container, int maxExtract, boolean simulate) {
-
-        if (container.getTag() == null) {
-            setDefaultTag(container, 0);
-        }
-        if (isCreative(container)) {
-            return maxExtract;
-        }
-        int stored = Math.min(container.getTag().getInt(TAG_ENERGY), getMaxEnergyStored(container));
-        int extract = Math.min(Math.min(maxExtract, getExtract(container)), stored);
-
-        if (!simulate) {
-            stored -= extract;
-            container.getTag().putInt(TAG_ENERGY, stored);
-        }
-        return extract;
-    }
-    // endregion
 
     // region IMultiModeItem
     @Override

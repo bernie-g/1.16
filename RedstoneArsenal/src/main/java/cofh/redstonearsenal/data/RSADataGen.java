@@ -1,6 +1,7 @@
-package cofh.redstonearsenal.datagen;
+package cofh.redstonearsenal.data;
 
 import net.minecraft.data.DataGenerator;
+import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
@@ -14,26 +15,29 @@ public class RSADataGen {
     public static void gatherData(final GatherDataEvent event) {
 
         if (event.includeServer()) {
-            registerServerProviders(event.getGenerator());
+            registerServerProviders(event);
         }
         if (event.includeClient()) {
-            registerClientProviders(event.getGenerator(), event);
+            registerClientProviders(event);
         }
     }
 
-    private static void registerServerProviders(DataGenerator generator) {
+    private static void registerServerProviders(GatherDataEvent event) {
 
-        //        generator.addProvider(new RSATags.Block(generator));
-        //        generator.addProvider(new RSATags.Item(generator));
+        DataGenerator gen = event.getGenerator();
+        ExistingFileHelper exFileHelper = event.getExistingFileHelper();
 
-        generator.addProvider(new RSALootTables(generator));
-        generator.addProvider(new RSARecipes(generator));
+        gen.addProvider(new RSALootTableProvider(gen));
+        gen.addProvider(new RSARecipeProvider(gen));
     }
 
-    private static void registerClientProviders(DataGenerator generator, GatherDataEvent event) {
+    private static void registerClientProviders(GatherDataEvent event) {
 
-        generator.addProvider(new RSABlockStates(generator, event.getExistingFileHelper()));
-        generator.addProvider(new RSAItemModels(generator, event.getExistingFileHelper()));
+        DataGenerator gen = event.getGenerator();
+        ExistingFileHelper exFileHelper = event.getExistingFileHelper();
+
+        gen.addProvider(new RSABlockStates(gen, exFileHelper));
+        gen.addProvider(new RSAItemModels(gen, exFileHelper));
     }
 
 }

@@ -1,6 +1,6 @@
 package cofh.redstonearsenal;
 
-import cofh.core.registries.DeferredRegisterCoFH;
+import cofh.lib.util.DeferredRegisterCoFH;
 import cofh.redstonearsenal.init.RSABlocks;
 import cofh.redstonearsenal.init.RSAConfig;
 import cofh.redstonearsenal.init.RSAItems;

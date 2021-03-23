@@ -1,7 +1,7 @@
-package cofh.redstonearsenal.datagen;
+package cofh.redstonearsenal.data;
 
-import cofh.core.data.BlockStateProviderCoFH;
-import cofh.core.registries.DeferredRegisterCoFH;
+import cofh.lib.data.BlockStateProviderCoFH;
+import cofh.lib.util.DeferredRegisterCoFH;
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;

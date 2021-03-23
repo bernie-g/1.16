@@ -1,12 +1,13 @@
 modLoader = "javafml"
 loaderVersion = "[34,)"
 issueTrackerURL = "https://github.com/cofh/feedback"
-license="https://github.com/Vazkii/Quark/blob/master/LICENSE.md"
+license = "CoFH - Don't Be A Jerk (Learn, Don't Steal)"
 
 [[mods]]
 modId = "redstone_arsenal"
 version = "${file.jarVersion}"
 displayName = "Redstone Arsenal"
+updateJSONURL = "https://raw.github.com/cofh/version/master/redstone_arsenal/update.json"
 displayURL = "https://teamcofh.com/"
 logoFile = "logo.png"
 credits = "Team CoFH"

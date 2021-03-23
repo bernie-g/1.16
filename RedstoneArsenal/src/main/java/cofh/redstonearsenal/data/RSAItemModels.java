@@ -1,7 +1,7 @@
-package cofh.redstonearsenal.datagen;
+package cofh.redstonearsenal.data;
 
-import cofh.core.data.ItemModelProviderCoFH;
-import cofh.core.registries.DeferredRegisterCoFH;
+import cofh.lib.data.ItemModelProviderCoFH;
+import cofh.lib.util.DeferredRegisterCoFH;
 import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.Item;

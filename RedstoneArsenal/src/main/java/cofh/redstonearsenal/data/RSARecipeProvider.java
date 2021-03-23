@@ -1,7 +1,7 @@
-package cofh.redstonearsenal.datagen;
+package cofh.redstonearsenal.data;
 
-import cofh.core.data.RecipeProviderCoFH;
-import cofh.core.registries.DeferredRegisterCoFH;
+import cofh.lib.data.RecipeProviderCoFH;
+import cofh.lib.util.DeferredRegisterCoFH;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.Item;
@@ -11,9 +11,9 @@ import java.util.function.Consumer;
 import static cofh.lib.util.constants.Constants.ID_REDSTONE_ARSENAL;
 import static cofh.redstonearsenal.RedstoneArsenal.ITEMS;
 
-public class RSARecipes extends RecipeProviderCoFH {
+public class RSARecipeProvider extends RecipeProviderCoFH {
 
-    public RSARecipes(DataGenerator generatorIn) {
+    public RSARecipeProvider(DataGenerator generatorIn) {
 
         super(generatorIn, ID_REDSTONE_ARSENAL);
     }
