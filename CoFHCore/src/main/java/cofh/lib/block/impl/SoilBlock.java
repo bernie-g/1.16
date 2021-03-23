@@ -52,7 +52,7 @@ public class SoilBlock extends Block {
                 aboveState.randomTick(worldIn, abovePos, rand);
             }
             if (rand.nextInt(boost) > 0) {
-                worldIn.setBlockState(pos, state.with(CHARGED, charge - 1), 2);
+                worldIn.setBlockState(pos, state.with(CHARGED, Math.max(0, charge - 1)), 2);
             }
         }
     }

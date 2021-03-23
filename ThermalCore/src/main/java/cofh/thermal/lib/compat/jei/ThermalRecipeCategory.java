@@ -24,6 +24,9 @@ public abstract class ThermalRecipeCategory<T extends ThermalRecipe> implements 
     protected final int ENERGY_X = 2;
     protected final int ENERGY_Y = 10;
 
+    protected final int EXP_X = 20;
+    protected final int EXP_Y = 10;
+
     protected final ResourceLocation uid;
     protected IDrawable background;
     protected IDrawable icon;
@@ -41,18 +44,11 @@ public abstract class ThermalRecipeCategory<T extends ThermalRecipe> implements 
 
     public ThermalRecipeCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid) {
 
-        this(guiHelper, icon, uid, true);
-    }
-
-    public ThermalRecipeCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid, boolean drawEnergy) {
-
         this.uid = uid;
         this.icon = guiHelper.createDrawableIngredient(icon);
 
-        if (drawEnergy) {
-            energyBackground = Drawables.getDrawables(guiHelper).getEnergyEmpty();
-            energy = guiHelper.createAnimatedDrawable(Drawables.getDrawables(guiHelper).getEnergyFill(), 400, IDrawableAnimated.StartDirection.TOP, true);
-        }
+        energyBackground = Drawables.getDrawables(guiHelper).getEnergyEmpty();
+        energy = guiHelper.createAnimatedDrawable(Drawables.getDrawables(guiHelper).getEnergyFill(), 400, IDrawableAnimated.StartDirection.TOP, true);
     }
 
     protected void addDefaultItemTooltipCallback(IGuiItemStackGroup group, List<Float> chances, int indexOffset) {
@@ -119,10 +115,8 @@ public abstract class ThermalRecipeCategory<T extends ThermalRecipe> implements 
     @Override
     public void draw(T recipe, MatrixStack matrixStack, double mouseX, double mouseY) {
 
-        if (energyBackground != null) {
+        if (recipe.getEnergy() > 0) {
             energyBackground.draw(matrixStack, ENERGY_X, ENERGY_Y);
-        }
-        if (energy != null) {
             energy.draw(matrixStack, ENERGY_X, ENERGY_Y);
         }
     }
@@ -132,9 +126,12 @@ public abstract class ThermalRecipeCategory<T extends ThermalRecipe> implements 
 
         List<ITextComponent> tooltip = new ArrayList<>();
 
-        if (energy != null && mouseX > ENERGY_X && mouseX < ENERGY_X + energy.getWidth() - 1 && mouseY > ENERGY_Y && mouseY < ENERGY_Y + energy.getHeight() - 1) {
+        if (recipe.getEnergy() > 0 && mouseX > ENERGY_X && mouseX < ENERGY_X + energy.getWidth() - 1 && mouseY > ENERGY_Y && mouseY < ENERGY_Y + energy.getHeight() - 1) {
             tooltip.add(getTextComponent("info.cofh.energy").appendString(": " + StringHelper.format(recipe.getEnergy()) + " RF"));
         }
+        //        if (recipe.getXp() > 0 && mouseX > EXP_X && mouseX < EXP_X + xp.getWidth() - 1 && mouseY > EXP_Y && mouseY < EXP_Y + xp.getHeight() - 1) {
+        //            tooltip.add(getTextComponent("info.cofh.xp").appendString(": " + recipe.getXp() + " XP"));
+        //        }
         return tooltip;
     }
     // endregion

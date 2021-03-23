@@ -516,6 +516,10 @@ public class TCoreTagsProvider {
         @Override
         protected void registerTags() {
 
+            getOrCreateBuilder(FluidTagsCoFH.REDSTONE).add(FLUIDS.get(ID_FLUID_REDSTONE));
+            getOrCreateBuilder(FluidTagsCoFH.GLOWSTONE).add(FLUIDS.get(ID_FLUID_GLOWSTONE));
+            getOrCreateBuilder(FluidTagsCoFH.ENDER).add(FLUIDS.get(ID_FLUID_ENDER));
+
             getOrCreateBuilder(FluidTagsCoFH.LATEX).add(FLUIDS.get(ID_FLUID_LATEX));
 
             getOrCreateBuilder(FluidTagsCoFH.CREOSOTE).add(FLUIDS.get(ID_FLUID_CREOSOTE));

@@ -12,6 +12,7 @@ import java.util.function.BiPredicate;
 import java.util.function.IntSupplier;
 import java.util.function.Predicate;
 
+import static cofh.lib.item.ContainerType.FLUID;
 import static cofh.lib.util.constants.Constants.MAX_POTION_AMPLIFIER;
 import static cofh.lib.util.constants.Constants.MAX_POTION_DURATION;
 import static cofh.lib.util.constants.NBTTags.*;
@@ -122,9 +123,16 @@ public class FluidContainerItemAugmentable extends FluidContainerItem implements
             }
             setAttributesFromAugment(container, augmentData);
         }
-        int fluidExcess = getFluidAmount(container) - getCapacity(container);
-        if (fluidExcess > 0) {
-            drain(container, fluidExcess, EXECUTE);
+        FluidStack fluid = getFluid(container);
+        if (isCreative(container, FLUID)) {
+            if (!fluid.isEmpty()) {
+                fill(container, new FluidStack(fluid, getSpace(container)), EXECUTE);
+            }
+        } else {
+            int fluidExcess = getFluidAmount(container) - getCapacity(container);
+            if (fluidExcess > 0) {
+                drain(container, fluidExcess, EXECUTE);
+            }
         }
     }
     // endregion

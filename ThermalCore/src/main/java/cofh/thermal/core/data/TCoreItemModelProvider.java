@@ -87,9 +87,9 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
         generated(reg.getSup("blizz_rod"), RESOURCES);
         generated(reg.getSup("blizz_powder"), RESOURCES);
 
-        //        generated(reg.getSup("redstone_bucket"), RESOURCES);
-        //        generated(reg.getSup("glowstone_bucket"), RESOURCES);
-        //        generated(reg.getSup("ender_bucket"), RESOURCES);
+        generated(reg.getSup("redstone_bucket"), RESOURCES);
+        generated(reg.getSup("glowstone_bucket"), RESOURCES);
+        generated(reg.getSup("ender_bucket"), RESOURCES);
 
         generated(reg.getSup("creosote_bucket"), RESOURCES);
         generated(reg.getSup("crude_oil_bucket"), RESOURCES);
@@ -136,7 +136,7 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
 
         handheld(reg.getSup("wrench"), TOOLS);
         handheld(reg.getSup("redprint"), TOOLS);
-        // handheld(reg.getSup("xp_crystal"), TOOLS);
+        handheld(reg.getSup("xp_crystal"), TOOLS);
         generated(reg.getSup("rf_potato"), TOOLS);
         generated(reg.getSup("lock"), TOOLS);
         generated(reg.getSup("phytogro"), TOOLS);

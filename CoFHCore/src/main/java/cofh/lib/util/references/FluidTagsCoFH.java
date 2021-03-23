@@ -14,6 +14,10 @@ public class FluidTagsCoFH {
     public static final IOptionalNamedTag<Fluid> HONEY = forgeTag("honey");
     public static final IOptionalNamedTag<Fluid> POTION = forgeTag("potion");
 
+    public static final IOptionalNamedTag<Fluid> REDSTONE = forgeTag("redstone");
+    public static final IOptionalNamedTag<Fluid> GLOWSTONE = forgeTag("glowstone");
+    public static final IOptionalNamedTag<Fluid> ENDER = forgeTag("ender");
+
     public static final IOptionalNamedTag<Fluid> LATEX = forgeTag("latex");
 
     public static final IOptionalNamedTag<Fluid> CREOSOTE = forgeTag("creosote");

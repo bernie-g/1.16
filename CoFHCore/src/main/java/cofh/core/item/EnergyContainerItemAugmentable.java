@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.function.BiPredicate;
 import java.util.function.IntSupplier;
 
+import static cofh.lib.item.ContainerType.ENERGY;
 import static cofh.lib.util.constants.NBTTags.*;
 import static cofh.lib.util.helpers.AugmentableHelper.getPropertyWithDefault;
 import static cofh.lib.util.helpers.AugmentableHelper.setAttributeFromAugmentMax;
@@ -108,9 +109,13 @@ public class EnergyContainerItemAugmentable extends EnergyContainerItem implemen
             }
             setAttributesFromAugment(container, augmentData);
         }
-        int energyExcess = getEnergyStored(container) - getMaxEnergyStored(container);
-        if (energyExcess > 0) {
+        if (isCreative(container, ENERGY)) {
             setEnergyStored(container, getMaxEnergyStored(container));
+        } else {
+            int energyExcess = getEnergyStored(container) - getMaxEnergyStored(container);
+            if (energyExcess > 0) {
+                setEnergyStored(container, getMaxEnergyStored(container));
+            }
         }
     }
     // endregion

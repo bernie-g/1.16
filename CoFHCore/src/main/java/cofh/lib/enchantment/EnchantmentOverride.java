@@ -11,6 +11,12 @@ public abstract class EnchantmentOverride extends EnchantmentCoFH {
         super(rarityIn, typeIn, slots);
     }
 
+    public EnchantmentCoFH setEnable(boolean enable) {
+
+        this.enable = enable;
+        return this;
+    }
+
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack) {
 
@@ -21,6 +27,18 @@ public abstract class EnchantmentOverride extends EnchantmentCoFH {
     public boolean isAllowedOnBooks() {
 
         return allowOnBooks;
+    }
+
+    @Override
+    public boolean canGenerateInLoot() {
+
+        return allowGenerateInLoot;
+    }
+
+    @Override
+    public boolean canVillagerTrade() {
+
+        return allowVillagerTrade;
     }
 
 }
