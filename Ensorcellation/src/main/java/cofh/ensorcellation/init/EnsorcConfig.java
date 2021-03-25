@@ -88,10 +88,10 @@ public class EnsorcConfig {
         SERVER_CONFIG.push("Displacement");
         enableDisplacement = SERVER_CONFIG
                 .comment("If TRUE, the Displacement Enchantment is available for Armor, Shields, and Horse Armor.")
-                .define("Enable", true);
+                .define("Enable", false);
         treasureDisplacement = SERVER_CONFIG
                 .comment(treasure)
-                .define("Treasure", false);
+                .define("Treasure", true);
         levelDisplacement = SERVER_CONFIG
                 .comment(level)
                 .defineInRange("Max Level", 3, 1, MAX_ENCHANT_LEVEL);
@@ -106,10 +106,10 @@ public class EnsorcConfig {
         SERVER_CONFIG.push("Flaming Rebuke");
         enableFireRebuke = SERVER_CONFIG
                 .comment("If TRUE, the Flaming Rebuke Enchantment is available for Armor, Shields, and Horse Armor.")
-                .define("Enable", true);
+                .define("Enable", false);
         treasureFireRebuke = SERVER_CONFIG
                 .comment(treasure)
-                .define("Treasure", false);
+                .define("Treasure", true);
         levelFireRebuke = SERVER_CONFIG
                 .comment(level)
                 .defineInRange("Max Level", 3, 1, MAX_ENCHANT_LEVEL);
@@ -124,10 +124,10 @@ public class EnsorcConfig {
         SERVER_CONFIG.push("Chilling Rebuke");
         enableFrostRebuke = SERVER_CONFIG
                 .comment("If TRUE, the Chilling Rebuke Enchantment is available for Armor, Shields, and Horse Armor.")
-                .define("Enable", true);
+                .define("Enable", false);
         treasureFrostRebuke = SERVER_CONFIG
                 .comment(treasure)
-                .define("Treasure", false);
+                .define("Treasure", true);
         levelFrostRebuke = SERVER_CONFIG
                 .comment(level)
                 .defineInRange("Max Level", 3, 1, MAX_ENCHANT_LEVEL);
@@ -167,7 +167,7 @@ public class EnsorcConfig {
         SERVER_CONFIG.push("Gourmand");
         enableGourmand = SERVER_CONFIG
                 .comment("If TRUE, the Gourmand Enchantment is available for Helmets.")
-                .define("Enable", true);
+                .define("Enable", false);
         treasureGourmand = SERVER_CONFIG
                 .comment(treasure)
                 .define("Treasure", false);
@@ -208,10 +208,10 @@ public class EnsorcConfig {
         SERVER_CONFIG.push("Ender Disruption");
         enableDamageEnder = SERVER_CONFIG
                 .comment("If TRUE, the Ender Disruption Enchantment is available for various Weapons.")
-                .define("Enable", true);
+                .define("Enable", false);
         treasureDamageEnder = SERVER_CONFIG
                 .comment(treasure)
-                .define("Treasure", false);
+                .define("Treasure", true);
         levelDamageEnder = SERVER_CONFIG
                 .comment(level)
                 .defineInRange("Max Level", 5, 1, MAX_ENCHANT_LEVEL);
@@ -223,7 +223,7 @@ public class EnsorcConfig {
                 .define("Enable", true);
         treasureDamageIllager = SERVER_CONFIG
                 .comment(treasure)
-                .define("Treasure", false);
+                .define("Treasure", true);
         levelDamageIllager = SERVER_CONFIG
                 .comment(level)
                 .defineInRange("Max Level", 5, 1, MAX_ENCHANT_LEVEL);
@@ -247,10 +247,10 @@ public class EnsorcConfig {
         SERVER_CONFIG.push("Cavalier");
         enableCavalier = SERVER_CONFIG
                 .comment("If TRUE, the Cavalier Enchantment is available for various Weapons.")
-                .define("Enable", true);
+                .define("Enable", false);
         treasureCavalier = SERVER_CONFIG
                 .comment(treasure)
-                .define("Treasure", false);
+                .define("Treasure", true);
         levelCavalier = SERVER_CONFIG
                 .comment(level)
                 .defineInRange("Max Level", 3, 1, MAX_ENCHANT_LEVEL);
@@ -262,7 +262,7 @@ public class EnsorcConfig {
                 .define("Enable", true);
         treasureFrostAspect = SERVER_CONFIG
                 .comment(treasure)
-                .define("Treasure", false);
+                .define("Treasure", true);
         levelFrostAspect = SERVER_CONFIG
                 .comment(level)
                 .defineInRange("Max Level", 2, 1, MAX_ENCHANT_LEVEL);
@@ -271,10 +271,10 @@ public class EnsorcConfig {
         SERVER_CONFIG.push("Instigating");
         enableInstigating = SERVER_CONFIG
                 .comment("If TRUE, the Instigating Enchantment is available for various Weapons.")
-                .define("Enable", true);
+                .define("Enable", false);
         treasureInstigating = SERVER_CONFIG
                 .comment(treasure)
-                .define("Treasure", false);
+                .define("Treasure", true);
         SERVER_CONFIG.pop();
 
         SERVER_CONFIG.push("Leech");
@@ -307,7 +307,7 @@ public class EnsorcConfig {
                 .define("Enable", true);
         treasureVorpal = SERVER_CONFIG
                 .comment(treasure)
-                .define("Treasure", false);
+                .define("Treasure", true);
         levelVorpal = SERVER_CONFIG
                 .comment(level)
                 .defineInRange("Max Level", 3, 1, MAX_ENCHANT_LEVEL);
@@ -448,7 +448,7 @@ public class EnsorcConfig {
         SERVER_CONFIG.push("Weeding");
         enableWeeding = SERVER_CONFIG
                 .comment("If TRUE, the Weeding Enchantment is available for Hoes.")
-                .define("Enable", true);
+                .define("Enable", false);
         treasureWeeding = SERVER_CONFIG
                 .comment(treasure)
                 .define("Treasure", false);
