@@ -156,7 +156,7 @@ public abstract class RecipeJsonUtils {
                 JsonElement nbtElement = itemObject.get(NBT);
                 CompoundNBT nbt;
                 try {
-                    if (element.isJsonObject()) {
+                    if (nbtElement.isJsonObject()) {
                         nbt = JsonToNBT.getTagFromJson(GSON.toJson(nbtElement));
                     } else {
                         nbt = JsonToNBT.getTagFromJson(JSONUtils.getString(nbtElement, NBT));
@@ -203,12 +203,28 @@ public abstract class RecipeJsonUtils {
 
             /* NBT */
             if (fluidObject.has(NBT)) {
+                JsonElement nbtElement = fluidObject.get(NBT);
+                CompoundNBT nbt;
                 try {
-                    stack.setTag(JsonToNBT.getTagFromJson(fluidObject.get(NBT).getAsString()));
+                    if (nbtElement.isJsonObject()) {
+                        nbt = JsonToNBT.getTagFromJson(GSON.toJson(nbtElement));
+                    } else {
+                        nbt = JsonToNBT.getTagFromJson(JSONUtils.getString(nbtElement, NBT));
+                    }
+                    stack.setTag(nbt);
                 } catch (Exception e) {
                     return FluidStack.EMPTY;
                 }
             }
+
+            //            /* NBT */
+            //            if (fluidObject.has(NBT)) {
+            //                try {
+            //                    stack.setTag(JsonToNBT.getTagFromJson(fluidObject.get(NBT).getAsString()));
+            //                } catch (Exception e) {
+            //                    return FluidStack.EMPTY;
+            //                }
+            //            }
         }
         return stack;
     }

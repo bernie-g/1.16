@@ -37,13 +37,13 @@ public class ShieldEnchClientEvents {
                 hadPhalanx = true;
                 timePhalanx = entity.world.getGameTime();
             }
-            event.setNewfov((float) MathHelper.clamp(event.getFov() - modPhalanx, 1.0D, 2.5D));
+            event.setNewfov((float) MathHelper.clamp(event.getNewfov() - modPhalanx, 1.0D, 2.5D));
         } else if (hadPhalanx) {
             if (entity.world.getGameTime() - 20 > timePhalanx) {
                 hadPhalanx = false;
                 modPhalanx = 0;
             }
-            event.setNewfov((float) MathHelper.clamp(event.getFov() - modPhalanx, 1.0D, 2.5D));
+            event.setNewfov((float) MathHelper.clamp(event.getNewfov() - modPhalanx, 1.0D, 2.5D));
         }
     }
 

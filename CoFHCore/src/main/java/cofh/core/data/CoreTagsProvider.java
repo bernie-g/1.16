@@ -116,6 +116,15 @@ public class CoreTagsProvider {
             getOrCreateBuilder(FluidTagsCoFH.HONEY).add(FLUIDS.get(ID_FLUID_HONEY));
             getOrCreateBuilder(FluidTagsCoFH.POTION).add(FLUIDS.get(ID_FLUID_POTION));
             getOrCreateBuilder(FluidTagsCoFH.EXPERIENCE).add(FLUIDS.get(ID_FLUID_XP));
+
+            getOrCreateBuilder(FluidTagsCoFH.REDSTONE);
+            getOrCreateBuilder(FluidTagsCoFH.GLOWSTONE);
+            getOrCreateBuilder(FluidTagsCoFH.ENDER);
+
+            getOrCreateBuilder(FluidTagsCoFH.LATEX);
+
+            getOrCreateBuilder(FluidTagsCoFH.CREOSOTE);
+            getOrCreateBuilder(FluidTagsCoFH.CRUDE_OIL);
         }
 
     }
