@@ -9,8 +9,7 @@ import net.minecraftforge.energy.IEnergyStorage;
 
 import java.util.function.BooleanSupplier;
 
-import static cofh.lib.util.constants.Constants.FALSE;
-import static cofh.lib.util.constants.Constants.MAX_CAPACITY;
+import static cofh.lib.util.constants.Constants.*;
 import static cofh.lib.util.constants.NBTTags.*;
 
 /**
@@ -25,6 +24,7 @@ public class EnergyStorageCoFH implements IEnergyStorage, IResourceStorage, INBT
     protected final int baseExtract;
 
     protected BooleanSupplier creative = FALSE;
+    protected BooleanSupplier enabled = TRUE;
 
     protected int energy;
     protected int capacity;
@@ -90,6 +90,14 @@ public class EnergyStorageCoFH implements IEnergyStorage, IResourceStorage, INBT
         this.creative = creative;
         if (isCreative()) {
             energy = getCapacity();
+        }
+        return this;
+    }
+
+    public EnergyStorageCoFH setEnabled(BooleanSupplier enabled) {
+
+        if (enabled != null) {
+            this.enabled = enabled;
         }
         return this;
     }
@@ -191,6 +199,9 @@ public class EnergyStorageCoFH implements IEnergyStorage, IResourceStorage, INBT
     @Override
     public int receiveEnergy(int maxReceive, boolean simulate) {
 
+        if (!enabled.getAsBoolean()) {
+            return 0;
+        }
         int energyReceived = Math.min(capacity - energy, Math.min(this.maxReceive, maxReceive));
         if (!simulate) {
             energy += energyReceived;
@@ -201,6 +212,9 @@ public class EnergyStorageCoFH implements IEnergyStorage, IResourceStorage, INBT
     @Override
     public int extractEnergy(int maxExtract, boolean simulate) {
 
+        if (!enabled.getAsBoolean()) {
+            return 0;
+        }
         int energyExtracted = Math.min(energy, Math.min(this.maxExtract, maxExtract));
         if (!simulate && !isCreative()) {
             energy -= energyExtracted;

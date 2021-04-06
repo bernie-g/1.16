@@ -1,13 +1,9 @@
 package cofh.redstonearsenal.init;
 
-import cofh.redstonearsenal.item.FluxSwordItem;
 import net.minecraft.item.IItemTier;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.crafting.Ingredient;
-
-import static cofh.redstonearsenal.RedstoneArsenal.ITEMS;
 
 public class RSAItems {
 
@@ -34,7 +30,7 @@ public class RSAItems {
         //        //        ITEMS.register("flux_infused_plate", () -> new ItemCoFH(new Item.Properties().group(misc).rarity(rarity)));
         //        //        ITEMS.register("flux_infused_coin", () -> new ItemCoFH(new Item.Properties().group(misc).rarity(rarity)));
         //
-        ITEMS.register("flux_sword", () -> new FluxSwordItem(MATERIAL_FLUX_METAL, 3, -2.4F, new Item.Properties().maxStackSize(1).group(combat).rarity(rarity).setNoRepair(), energy, xfer));
+        //  ITEMS.register("flux_sword", () -> new FluxSwordItem(MATERIAL_FLUX_METAL, 3, -2.4F, new Item.Properties().maxStackSize(1).group(combat).rarity(rarity).setNoRepair(), energy, xfer));
         //        ITEMS.register("flux_shovel", () -> new FluxShovelItem(MATERIAL_FLUX_METAL, 1.5F, -3.0F, new Item.Properties().maxStackSize(1).group(tools).rarity(rarity).maxDamage(0).setNoRepair(), energy, xfer));
         //        ITEMS.register("flux_pickaxe", () -> new FluxPickaxeItem(MATERIAL_FLUX_METAL, 1, -2.8F, new Item.Properties().maxStackSize(1).group(tools).rarity(rarity).maxDamage(0).setNoRepair(), energy, xfer));
         //        ITEMS.register("flux_axe", () -> new FluxAxeItem(MATERIAL_FLUX_METAL, 6.0F, -3.0F, new Item.Properties().maxStackSize(1).group(tools).rarity(rarity).maxDamage(0).setNoRepair(), energy, xfer));
