@@ -123,12 +123,12 @@ public class TCoreReferences {
     @ObjectHolder(ID_DEVICE_SOIL_INFUSER)
     public static final ContainerType<DeviceSoilInfuserContainer> DEVICE_SOIL_INFUSER_CONTAINER = null;
 
-    @ObjectHolder(ID_DEVICE_ROCK_GEN)
-    public static final Block DEVICE_ROCK_GEN_BLOCK = null;
-    @ObjectHolder(ID_DEVICE_ROCK_GEN)
-    public static final TileEntityType<DeviceRockGenTile> DEVICE_ROCK_GEN_TILE = null;
-    @ObjectHolder(ID_DEVICE_ROCK_GEN)
-    public static final ContainerType<DeviceRockGenContainer> DEVICE_ROCK_GEN_CONTAINER = null;
+    @ObjectHolder(ID_DEVICE_FISHER)
+    public static final Block DEVICE_FISHER_BLOCK = null;
+    @ObjectHolder(ID_DEVICE_FISHER)
+    public static final TileEntityType<DeviceFisherTile> DEVICE_FISHER_TILE = null;
+    @ObjectHolder(ID_DEVICE_FISHER)
+    public static final ContainerType<DeviceFisherContainer> DEVICE_FISHER_CONTAINER = null;
 
     @ObjectHolder(ID_DEVICE_WATER_GEN)
     public static final Block DEVICE_WATER_GEN_BLOCK = null;
@@ -136,6 +136,13 @@ public class TCoreReferences {
     public static final TileEntityType<DeviceWaterGenTile> DEVICE_WATER_GEN_TILE = null;
     @ObjectHolder(ID_DEVICE_WATER_GEN)
     public static final ContainerType<DeviceWaterGenContainer> DEVICE_WATER_GEN_CONTAINER = null;
+
+    @ObjectHolder(ID_DEVICE_ROCK_GEN)
+    public static final Block DEVICE_ROCK_GEN_BLOCK = null;
+    @ObjectHolder(ID_DEVICE_ROCK_GEN)
+    public static final TileEntityType<DeviceRockGenTile> DEVICE_ROCK_GEN_TILE = null;
+    @ObjectHolder(ID_DEVICE_ROCK_GEN)
+    public static final ContainerType<DeviceRockGenContainer> DEVICE_ROCK_GEN_CONTAINER = null;
 
     @ObjectHolder(ID_DEVICE_COLLECTOR)
     public static final Block DEVICE_COLLECTOR_BLOCK = null;

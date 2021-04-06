@@ -51,7 +51,7 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_FLUID, TAG_AUGMENT_TYPE_FILTER);
 
     protected static final int NUM_LEAVES = 3;
-    protected static final int TICK_RATE = 500;
+    protected static final int TIME_CONSTANT = 500;
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && TreeExtractorManager.instance().validBoost(item));
     protected FluidStorageCoFH outputTank = new FluidStorageCoFH(TANK_MEDIUM);
@@ -62,7 +62,7 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
     protected BlockPos trunkPos;
     protected final BlockPos[] leafPos = new BlockPos[NUM_LEAVES];
 
-    protected int process = TICK_RATE / 2;
+    protected int process = TIME_CONSTANT / 2;
 
     protected int boostCycles;
     protected int boostMax = TreeExtractorManager.instance().getDefaultEnergy();
@@ -350,14 +350,17 @@ public class DeviceTreeExtractorTile extends DeviceTileBase implements ITickable
     // region HELPERS
     protected int getTimeConstant() {
 
-        int constant = TICK_RATE / 2;
+        if (world == null) {
+            return TIME_CONSTANT;
+        }
+        int constant = TIME_CONSTANT / 2;
         Iterable<BlockPos> area = BlockPos.getAllInBoxMutable(trunkPos.add(-1, 0, -1), trunkPos.add(1, 0, 1));
         for (BlockPos scan : area) {
             if (isTreeExtractor(world.getBlockState(scan))) {
-                constant += TICK_RATE / 2;
+                constant += TIME_CONSTANT / 2;
             }
         }
-        return MathHelper.clamp(constant, TICK_RATE, TICK_RATE * 2);
+        return MathHelper.clamp(constant, TIME_CONSTANT, TIME_CONSTANT * 2);
     }
 
     protected boolean isTrunkBase(BlockPos checkPos) {
