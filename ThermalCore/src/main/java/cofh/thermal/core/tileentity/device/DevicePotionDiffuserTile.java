@@ -50,7 +50,7 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_FLUID, TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_FILTER, TAG_AUGMENT_TYPE_POTION);
 
-    protected static final int TICK_RATE = 60;
+    protected static final int TIME_CONSTANT = 60;
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && PotionDiffuserManager.instance().validBoost(item));
     protected FluidStorageCoFH inputTank = new FluidStorageCoFH(TANK_MEDIUM, fluid -> filter.valid(fluid) && FluidHelper.hasPotionTag(fluid));
@@ -264,7 +264,7 @@ public class DevicePotionDiffuserTile extends DeviceTileBase implements ITickabl
 
     public int getTimeConstant() {
 
-        return TICK_RATE;
+        return TIME_CONSTANT;
     }
 
     public boolean isInstant() {

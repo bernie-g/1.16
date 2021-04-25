@@ -116,19 +116,19 @@ public class TCoreReferences {
     @ObjectHolder(ID_DEVICE_TREE_EXTRACTOR)
     public static final ContainerType<DeviceTreeExtractorContainer> DEVICE_TREE_EXTRACTOR_CONTAINER = null;
 
-    @ObjectHolder(ID_DEVICE_SOIL_INFUSER)
-    public static final Block DEVICE_SOIL_INFUSER_BLOCK = null;
-    @ObjectHolder(ID_DEVICE_SOIL_INFUSER)
-    public static final TileEntityType<DeviceSoilInfuserTile> DEVICE_SOIL_INFUSER_TILE = null;
-    @ObjectHolder(ID_DEVICE_SOIL_INFUSER)
-    public static final ContainerType<DeviceSoilInfuserContainer> DEVICE_SOIL_INFUSER_CONTAINER = null;
-
     @ObjectHolder(ID_DEVICE_FISHER)
     public static final Block DEVICE_FISHER_BLOCK = null;
     @ObjectHolder(ID_DEVICE_FISHER)
     public static final TileEntityType<DeviceFisherTile> DEVICE_FISHER_TILE = null;
     @ObjectHolder(ID_DEVICE_FISHER)
     public static final ContainerType<DeviceFisherContainer> DEVICE_FISHER_CONTAINER = null;
+
+    @ObjectHolder(ID_DEVICE_SOIL_INFUSER)
+    public static final Block DEVICE_SOIL_INFUSER_BLOCK = null;
+    @ObjectHolder(ID_DEVICE_SOIL_INFUSER)
+    public static final TileEntityType<DeviceSoilInfuserTile> DEVICE_SOIL_INFUSER_TILE = null;
+    @ObjectHolder(ID_DEVICE_SOIL_INFUSER)
+    public static final ContainerType<DeviceSoilInfuserContainer> DEVICE_SOIL_INFUSER_CONTAINER = null;
 
     @ObjectHolder(ID_DEVICE_WATER_GEN)
     public static final Block DEVICE_WATER_GEN_BLOCK = null;

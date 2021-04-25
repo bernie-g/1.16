@@ -10,8 +10,7 @@ import net.minecraft.world.World;
 
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
-import static cofh.thermal.core.util.RegistrationHelper.registerCropAndSeed;
-import static cofh.thermal.core.util.RegistrationHelper.seeds;
+import static cofh.thermal.core.util.RegistrationHelper.*;
 import static cofh.thermal.cultivation.init.TCulFoods.*;
 import static cofh.thermal.cultivation.init.TCulIDs.*;
 import static cofh.thermal.lib.common.ThermalItemGroups.THERMAL_ITEMS;
@@ -35,6 +34,7 @@ public class TCulItems {
         // ANNUAL
         registerCropAndSeed(ID_BARLEY);
         registerCropAndSeed(ID_CORN, CORN);
+        registerCropAndSeed(ID_FLAX);
         registerCropAndSeed(ID_ONION, ONION);
         registerCropAndSeed(ID_RADISH, RADISH);
         registerCropAndSeed(ID_RICE);
@@ -58,6 +58,11 @@ public class TCulItems {
         ITEMS.register(seeds(ID_HOPS), () -> new ItemCoFH(new Item.Properties().group(THERMAL_ITEMS)));
 
         registerCropAndSeed(ID_TEA);
+
+        registerSelfSeed(ID_GLOWSTONE_MUSHROOM);
+        registerSelfSeed(ID_GUNPOWDER_MUSHROOM);
+        registerSelfSeed(ID_REDSTONE_MUSHROOM);
+        registerSelfSeed(ID_SLIME_MUSHROOM);
 
         // OTHER
         ITEMS.register(ID_FROST_MELON_SLICE, () -> new ItemCoFH(new Item.Properties().group(THERMAL_ITEMS).food(FROST_MELON_SLICE).rarity(Rarity.UNCOMMON)));

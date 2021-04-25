@@ -30,6 +30,7 @@ import java.util.Random;
 import java.util.function.Supplier;
 
 import static cofh.lib.util.Utils.getItemEnchantmentLevel;
+import static cofh.lib.util.constants.Constants.AGE_0_7;
 import static cofh.lib.util.constants.Constants.CROPS_BY_AGE;
 
 public class CropsBlockCoFH extends CropsBlock implements IHarvestable {
@@ -142,9 +143,10 @@ public class CropsBlockCoFH extends CropsBlock implements IHarvestable {
     // region AGE
     public IntegerProperty getAgeProperty() {
 
-        return AGE;
+        return AGE_0_7;
     }
 
+    @Override
     protected int getAge(BlockState state) {
 
         return state.get(getAgeProperty());

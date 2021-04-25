@@ -5,7 +5,9 @@ import cofh.lib.block.impl.DirectionalBlock4Way;
 import cofh.lib.block.impl.SoilBlock;
 import cofh.lib.block.impl.TilledSoilBlock;
 import cofh.lib.block.impl.crops.AttachedStemBlockCoFH;
+import cofh.lib.block.impl.crops.CropsBlockMushroom;
 import cofh.lib.block.impl.crops.StemBlockCoFH;
+import cofh.thermal.cultivation.block.FlaxCrop;
 import cofh.thermal.cultivation.block.FrostMelonBlock;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
@@ -48,6 +50,7 @@ public class TCulBlocks {
         // ANNUAL
         registerAnnual(ID_BARLEY);
         registerTallAnnual(ID_CORN);
+        registerFlax(ID_FLAX);
         registerAnnual(ID_ONION);
         registerAnnual(ID_RADISH);
         registerAnnual(ID_RICE);
@@ -66,6 +69,11 @@ public class TCulBlocks {
         // registerTallPerennial(ID_HOPS);
         registerPerennial(ID_TEA);
 
+        registerMushroom(ID_GLOWSTONE_MUSHROOM);
+        registerMushroom(ID_GUNPOWDER_MUSHROOM);
+        registerMushroom(ID_REDSTONE_MUSHROOM);
+        registerMushroom(ID_SLIME_MUSHROOM);
+
         // STEM
         registerBlock(ID_FROST_MELON, () -> new FrostMelonBlock(create(Material.GOURD, MaterialColor.CYAN).tickRandomly().hardnessAndResistance(1.0F).harvestTool(ToolType.AXE).sound(SoundType.SNOW)), Rarity.UNCOMMON);
         registerBlockOnly(ID_FROST_MELON_STEM, () -> new StemBlockCoFH(create(Material.PLANTS).tickRandomly().doesNotBlockMovement().hardnessAndResistance(0.0F).sound(SoundType.WOOD)).crop(BLOCKS.getSup(ID_FROST_MELON)).seed(ITEMS.getSup(seeds(ID_FROST_MELON))));
@@ -82,6 +90,7 @@ public class TCulBlocks {
 
         registerBlock(block(ID_BARLEY), () -> new HayBlock(create(Material.ORGANIC, MaterialColor.GOLD).hardnessAndResistance(0.5F).sound(SoundType.PLANT).harvestTool(ToolType.HOE)));
         registerBlock(block(ID_CORN), () -> new Block(create(Material.WOOD, MaterialColor.YELLOW).hardnessAndResistance(1.5F).sound(SoundType.SCAFFOLDING).harvestTool(ToolType.AXE)));
+        registerBlock(block(ID_FLAX), () -> new HayBlock(create(Material.ORGANIC, MaterialColor.PURPLE).hardnessAndResistance(0.5F).sound(SoundType.PLANT).harvestTool(ToolType.HOE)));
         registerBlock(block(ID_ONION), () -> new Block(create(Material.WOOD, MaterialColor.WHITE_TERRACOTTA).hardnessAndResistance(1.5F).sound(SoundType.SCAFFOLDING).harvestTool(ToolType.AXE)));
         registerBlock(block(ID_RADISH), () -> new Block(create(Material.WOOD, MaterialColor.RED_TERRACOTTA).hardnessAndResistance(1.5F).sound(SoundType.SCAFFOLDING).harvestTool(ToolType.AXE)));
         registerBlock(block(ID_SADIROOT), () -> new Block(create(Material.WOOD, MaterialColor.GREEN_TERRACOTTA).hardnessAndResistance(1.5F).sound(SoundType.SCAFFOLDING).harvestTool(ToolType.AXE)));
@@ -106,5 +115,16 @@ public class TCulBlocks {
         registerBlock(ID_PHYTOSOIL, () -> new SoilBlock(create(Material.EARTH).tickRandomly().hardnessAndResistance(0.8F).harvestTool(ToolType.SHOVEL).sound(SoundType.GROUND).setLightLevel((state) -> state.get(CHARGED) > 0 ? 7 : 0)));
         registerBlock(ID_PHYTOSOIL_TILLED, () -> new TilledSoilBlock(create(Material.EARTH).tickRandomly().hardnessAndResistance(0.8F).harvestTool(ToolType.SHOVEL).sound(SoundType.GROUND).setLightLevel((state) -> state.get(CHARGED) > 0 ? 7 : 0)).dirt(BLOCKS.getSup(ID_PHYTOSOIL)));
     }
+
+    public static void registerFlax(String id) {
+
+        BLOCKS.register(id, () -> new FlaxCrop(create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F, 0.0F).sound(SoundType.CROP)).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(seeds(id))));
+    }
+
+    public static void registerMushroom(String id) {
+
+        BLOCKS.register(id, () -> new CropsBlockMushroom(create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F, 0.0F).sound(SoundType.NETHER_WART)).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(id)));
+    }
+
     // endregion
 }

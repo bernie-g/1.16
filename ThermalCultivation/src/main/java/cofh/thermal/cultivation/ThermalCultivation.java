@@ -48,6 +48,7 @@ public class ThermalCultivation {
 
         setFlag(ID_DEVICE_HIVE_EXTRACTOR, true);
         setFlag(ID_DEVICE_TREE_EXTRACTOR, true);
+        setFlag(ID_DEVICE_FISHER, true);
         setFlag(ID_DEVICE_SOIL_INFUSER, true);
     }
 
@@ -60,7 +61,8 @@ public class ThermalCultivation {
                 float chance = 0.65F;
 
                 ComposterBlock.registerCompostable(chance, ITEMS.get(ID_BARLEY));
-                ComposterBlock.registerCompostable(chance, ITEMS.get(ID_BARLEY));
+                ComposterBlock.registerCompostable(chance, ITEMS.get(ID_CORN));
+                ComposterBlock.registerCompostable(chance, ITEMS.get(ID_FLAX));
                 ComposterBlock.registerCompostable(chance, ITEMS.get(ID_ONION));
                 ComposterBlock.registerCompostable(chance, ITEMS.get(ID_RADISH));
                 ComposterBlock.registerCompostable(chance, ITEMS.get(ID_RICE));
@@ -90,6 +92,7 @@ public class ThermalCultivation {
 
                 ComposterBlock.registerCompostable(chance, ITEMS.get(seeds(ID_BARLEY)));
                 ComposterBlock.registerCompostable(chance, ITEMS.get(seeds(ID_CORN)));
+                ComposterBlock.registerCompostable(chance, ITEMS.get(seeds(ID_FLAX)));
                 ComposterBlock.registerCompostable(chance, ITEMS.get(seeds(ID_ONION)));
                 ComposterBlock.registerCompostable(chance, ITEMS.get(seeds(ID_RADISH)));
                 ComposterBlock.registerCompostable(chance, ITEMS.get(seeds(ID_RICE)));
@@ -126,6 +129,7 @@ public class ThermalCultivation {
 
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_BARLEY), cutout);
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_CORN), cutout);
+        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_FLAX), cutout);
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_ONION), cutout);
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_RADISH), cutout);
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_RICE), cutout);
@@ -141,6 +145,11 @@ public class ThermalCultivation {
 
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_COFFEE), cutout);
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_TEA), cutout);
+
+        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_GLOWSTONE_MUSHROOM), cutout);
+        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_GUNPOWDER_MUSHROOM), cutout);
+        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_REDSTONE_MUSHROOM), cutout);
+        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_SLIME_MUSHROOM), cutout);
 
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_FROST_MELON_STEM), cutout);
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_FROST_MELON_STEM_ATTACHED), cutout);

@@ -438,6 +438,7 @@
   "_comment": "========================================================================================================",
 
   "block.thermal.device_collector": "Vacuumulator",
+  "block.thermal.device_fisher": "Aquatic Entangler",
   "block.thermal.device_hive_extractor": "Hive Hopper",
   "block.thermal.device_nullifier": "Nullifier",
   "block.thermal.device_potion_diffuser": "Decoctive Diffuser",
@@ -458,6 +459,10 @@
   "info.thermal.device_collector.0": "Picks up things from the nearby area.",
   "info.thermal.device_collector.1": "Filter configuration will apply to this behavior.",
   "info.thermal.device_collector.2": "Keep those floors clean!",
+
+  "info.thermal.device_fisher.0": "Captures assorted aquatic life. Use bait to boost production.",
+  "info.thermal.device_fisher.1": "Must be placed in a body of water.",
+  "info.thermal.device_fisher.2": "Hang up your fishing rod.",
 
   "info.thermal.device_hive_extractor.0": "Carefully extracts products from beehives.",
   "info.thermal.device_hive_extractor.1": "Good for bees and keepers alike!",
@@ -635,6 +640,7 @@
   "block.thermal.coffee_block": "Sack of Coffee",
   "block.thermal.corn_block": "Crate of Corn",
   "block.thermal.eggplant_block": "Crate of Eggplants",
+  "block.thermal.flax_block": "Flax Bale",
   "block.thermal.green_bean_block": "Crate of Green Beans",
   "block.thermal.hops_block": "Crate of Hops",
   "block.thermal.onion_block": "Crate of Onions",
@@ -658,6 +664,8 @@
   "item.thermal.dough": "Dough",
   "item.thermal.eggplant": "Eggplant",
   "item.thermal.eggplant_seeds": "Eggplant Seeds",
+  "item.thermal.flax": "Flax",
+  "item.thermal.flax_seeds": "Flax Seeds",
   "item.thermal.flour": "Flour",
   "item.thermal.frost_melon_seeds": "Frost Melon Seeds",
   "item.thermal.frost_melon_slice": "Frost Melon Slice",

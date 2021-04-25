@@ -32,6 +32,7 @@ public class ItemTagsCoFH {
     public static final IOptionalNamedTag<Item> CROPS_COFFEE = forgeTag("crops/coffee");
     public static final IOptionalNamedTag<Item> CROPS_CORN = forgeTag("crops/corn");
     public static final IOptionalNamedTag<Item> CROPS_EGGPLANT = forgeTag("crops/eggplant");
+    public static final IOptionalNamedTag<Item> CROPS_FLAX = forgeTag("crops/flax");
     public static final IOptionalNamedTag<Item> CROPS_GREEN_BEAN = forgeTag("crops/green_bean");
     public static final IOptionalNamedTag<Item> CROPS_HOPS = forgeTag("crops/hops");
     public static final IOptionalNamedTag<Item> CROPS_ONION = forgeTag("crops/onion");
@@ -174,6 +175,7 @@ public class ItemTagsCoFH {
     public static final IOptionalNamedTag<Item> SEEDS_CORN = forgeTag("seeds/corn");
     public static final IOptionalNamedTag<Item> SEEDS_FROST_MELON = forgeTag("seeds/frost_melon");
     public static final IOptionalNamedTag<Item> SEEDS_EGGPLANT = forgeTag("seeds/eggplant");
+    public static final IOptionalNamedTag<Item> SEEDS_FLAX = forgeTag("seeds/flax");
     public static final IOptionalNamedTag<Item> SEEDS_GREEN_BEAN = forgeTag("seeds/green_bean");
     public static final IOptionalNamedTag<Item> SEEDS_HOPS = forgeTag("seeds/hops");
     public static final IOptionalNamedTag<Item> SEEDS_ONION = forgeTag("seeds/onion");

@@ -58,6 +58,11 @@ public class TCulRecipeProvider extends RecipeProviderCoFH {
                 .addCriterion("has_phytogro", hasItem(reg.get("phytogro")))
                 .build(consumer);
 
+        ShapelessRecipeBuilder.shapelessRecipe(Items.STRING)
+                .addIngredient(reg.get(ID_FLAX))
+                .addCriterion("has_flax", hasItem(reg.get(ID_FLAX)))
+                .build(consumer);
+
         ShapelessRecipeBuilder.shapelessRecipe(reg.get(seeds(ID_FROST_MELON)))
                 .addIngredient(reg.get(ID_FROST_MELON_SLICE))
                 .addCriterion("has_frost_melon", hasItem(reg.get(ID_FROST_MELON_SLICE)))
@@ -112,6 +117,7 @@ public class TCulRecipeProvider extends RecipeProviderCoFH {
         generateStorageRecipes(consumer, reg.get(block(ID_COFFEE)), reg.get(ID_COFFEE), forgeTag("crops/coffee"));
         generateStorageRecipes(consumer, reg.get(block(ID_CORN)), reg.get(ID_CORN), forgeTag("crops/corn"));
         generateStorageRecipes(consumer, reg.get(block(ID_EGGPLANT)), reg.get(ID_EGGPLANT), forgeTag("crops/eggplant"));
+        generateStorageRecipes(consumer, reg.get(block(ID_FLAX)), reg.get(ID_FLAX), forgeTag("crops/flax"));
         generateStorageRecipes(consumer, reg.get(block(ID_GREEN_BEAN)), reg.get(ID_GREEN_BEAN), forgeTag("crops/green_bean"));
         generateStorageRecipes(consumer, reg.get(block(ID_HOPS)), reg.get(ID_HOPS), forgeTag("crops/hops"));
         generateStorageRecipes(consumer, reg.get(block(ID_ONION)), reg.get(ID_ONION), forgeTag("crops/onion"));

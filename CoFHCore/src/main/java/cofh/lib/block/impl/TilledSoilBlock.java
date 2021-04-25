@@ -52,7 +52,7 @@ public class TilledSoilBlock extends SoilBlock {
     @Override
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable) {
 
-        return canSustainPlant(world, pos, facing, plantable, true);
+        return canSustainPlant(state, world, pos, facing, plantable, true);
     }
 
     @Override

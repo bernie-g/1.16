@@ -1,6 +1,7 @@
 package cofh.thermal.core.inventory.container.device;
 
 import cofh.core.inventory.container.TileContainer;
+import cofh.lib.inventory.container.slot.SlotCoFH;
 import cofh.lib.inventory.container.slot.SlotRemoveOnly;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
 import cofh.thermal.lib.tileentity.ThermalTileBase;
@@ -21,9 +22,11 @@ public class DeviceFisherContainer extends TileContainer {
         this.tile = (ThermalTileBase) world.getTileEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
+        addSlot(new SlotCoFH(tileInv, 0, 26, 26));
+
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 5; ++j) {
-                addSlot(new SlotRemoveOnly(tileInv, i * 5 + j, 62 + j * 18, 17 + i * 18));
+                addSlot(new SlotRemoveOnly(tileInv, 1 + i * 5 + j, 62 + j * 18, 17 + i * 18));
             }
         }
         bindAugmentSlots(tileInv, 15, this.tile.augSize());

@@ -1345,6 +1345,18 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .addCriterion("has_redstone_servo", hasItem(redstoneServo))
                 .build(withConditions(consumer).flag(ID_DEVICE_TREE_EXTRACTOR));
 
+        ShapedRecipeBuilder.shapedRecipe(reg.get(ID_DEVICE_FISHER))
+                .key('C', Items.FISHING_ROD)
+                .key('G', Tags.Items.GLASS)
+                .key('I', ItemTags.PLANKS)
+                .key('P', redstoneServo)
+                .key('X', ItemTagsCoFH.GEARS_COPPER)
+                .patternLine("IXI")
+                .patternLine("GCG")
+                .patternLine("IPI")
+                .addCriterion("has_redstone_servo", hasItem(redstoneServo))
+                .build(withConditions(consumer).flag(ID_DEVICE_FISHER));
+
         ShapedRecipeBuilder.shapedRecipe(reg.get(ID_DEVICE_SOIL_INFUSER))
                 .key('C', reg.get("phytogro"))
                 .key('G', Tags.Items.GLASS)

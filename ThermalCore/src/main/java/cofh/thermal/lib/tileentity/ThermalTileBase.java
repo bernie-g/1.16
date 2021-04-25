@@ -684,10 +684,11 @@ public abstract class ThermalTileBase extends TileCoFH implements ISecurableTile
         float baseMod = getAttributeModWithDefault(augmentNBT, TAG_AUGMENT_BASE_MOD, 1.0F);
 
         float energyStorageMod = holdingMod * baseMod * getAttributeModWithDefault(augmentNBT, TAG_AUGMENT_RF_STORAGE, 1.0F);
-        float energyXferMod = holdingMod * baseMod * getAttributeModWithDefault(augmentNBT, TAG_AUGMENT_RF_STORAGE, 1.0F);
         float fluidStorageMod = holdingMod * baseMod * getAttributeModWithDefault(augmentNBT, TAG_AUGMENT_FLUID_STORAGE, 1.0F);
         float itemStorageMod = holdingMod * baseMod * getAttributeModWithDefault(augmentNBT, TAG_AUGMENT_ITEM_STORAGE, 1.0F);
         float xpStorageMod = holdingMod * baseMod;
+
+        float energyXferMod = baseMod * getAttributeModWithDefault(augmentNBT, TAG_AUGMENT_RF_XFER, 1.0F);
 
         energyStorage.applyModifiers(energyStorageMod, energyXferMod).setCreative(() -> creativeEnergy);
 

@@ -42,6 +42,7 @@ public class TCulLootTableProvider extends LootTableProviderCoFH {
 
         createCropTable(ID_BARLEY);
         createTallCropTable(ID_CORN);
+        createFlaxCropTable(ID_FLAX);
         createCropTable(ID_ONION);
         createCropTable(ID_RADISH);
         createCropTable(ID_RICE);
@@ -83,6 +84,7 @@ public class TCulLootTableProvider extends LootTableProviderCoFH {
         createSimpleDropTable(regBlocks.get(block(ID_COFFEE)));
         createSimpleDropTable(regBlocks.get(block(ID_CORN)));
         createSimpleDropTable(regBlocks.get(block(ID_EGGPLANT)));
+        createSimpleDropTable(regBlocks.get(block(ID_FLAX)));
         createSimpleDropTable(regBlocks.get(block(ID_GREEN_BEAN)));
         createSimpleDropTable(regBlocks.get(block(ID_HOPS)));
         createSimpleDropTable(regBlocks.get(block(ID_ONION)));
@@ -101,7 +103,12 @@ public class TCulLootTableProvider extends LootTableProviderCoFH {
 
     protected void createCropTable(String id) {
 
-        lootTables.put(BLOCKS.get(id), getCropTable(BLOCKS.get(id), ITEMS.get(id), ITEMS.get(seeds(id)), AGE, 7));
+        lootTables.put(BLOCKS.get(id), getCropTable(BLOCKS.get(id), ITEMS.get(id), ITEMS.get(seeds(id)), AGE_0_7, 7));
+    }
+
+    protected void createFlaxCropTable(String id) {
+
+        lootTables.put(BLOCKS.get(id), getCropTable(BLOCKS.get(id), ITEMS.get(id), ITEMS.get(seeds(id)), AGE_0_6, 6));
     }
 
     protected void createTallCropTable(String id) {

@@ -20,6 +20,7 @@ import net.minecraftforge.common.PlantType;
 import java.util.Random;
 
 import static cofh.lib.util.constants.Constants.CHARGED;
+import static cofh.lib.util.constants.Constants.FUNGUS;
 import static net.minecraftforge.common.PlantType.*;
 
 public class SoilBlock extends Block {
@@ -70,10 +71,10 @@ public class SoilBlock extends Block {
     @Override
     public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable) {
 
-        return canSustainPlant(world, pos, facing, plantable, false);
+        return canSustainPlant(state, world, pos, facing, plantable, false);
     }
 
-    protected boolean canSustainPlant(IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable, boolean tilled) {
+    protected boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable, boolean tilled) {
 
         if (plantable.getPlant(world, pos.offset(facing)).getBlock() instanceof AttachedStemBlock) {
             return true;
@@ -83,7 +84,7 @@ public class SoilBlock extends Block {
         if (type == CROP) {
             return tilled;
         }
-        if (type == CAVE || type == DESERT || type == PLAINS) {
+        if (type == CAVE || type == DESERT || type == PLAINS || type == FUNGUS) {
             return !tilled;
         }
         if (type == BEACH) {
@@ -94,6 +95,9 @@ public class SoilBlock extends Block {
                 }
             }
         }
+        //        if (plantable instanceof BushBlock && ((BushBlock) plantable).isValidGround(state, world, pos)) {
+        //            return true;
+        //        }
         return false;
     }
 

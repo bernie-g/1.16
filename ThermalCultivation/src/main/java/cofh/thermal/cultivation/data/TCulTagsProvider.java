@@ -56,6 +56,7 @@ public class TCulTagsProvider {
             getOrCreateBuilder(ItemTagsCoFH.CROPS_COFFEE).add(ITEMS.get(ID_COFFEE));
             getOrCreateBuilder(ItemTagsCoFH.CROPS_CORN).add(ITEMS.get(ID_CORN));
             getOrCreateBuilder(ItemTagsCoFH.CROPS_EGGPLANT).add(ITEMS.get(ID_EGGPLANT));
+            getOrCreateBuilder(ItemTagsCoFH.CROPS_FLAX).add(ITEMS.get(ID_FLAX));
             getOrCreateBuilder(ItemTagsCoFH.CROPS_GREEN_BEAN).add(ITEMS.get(ID_GREEN_BEAN));
             getOrCreateBuilder(ItemTagsCoFH.CROPS_HOPS).add(ITEMS.get(ID_HOPS));
             getOrCreateBuilder(ItemTagsCoFH.CROPS_ONION).add(ITEMS.get(ID_ONION));
@@ -74,6 +75,7 @@ public class TCulTagsProvider {
                     ItemTagsCoFH.CROPS_COFFEE,
                     ItemTagsCoFH.CROPS_CORN,
                     ItemTagsCoFH.CROPS_EGGPLANT,
+                    ItemTagsCoFH.CROPS_FLAX,
                     ItemTagsCoFH.CROPS_GREEN_BEAN,
                     ItemTagsCoFH.CROPS_HOPS,
                     ItemTagsCoFH.CROPS_ONION,
@@ -92,6 +94,7 @@ public class TCulTagsProvider {
             getOrCreateBuilder(ItemTagsCoFH.SEEDS_COFFEE).add(ITEMS.get(seeds(ID_COFFEE)));
             getOrCreateBuilder(ItemTagsCoFH.SEEDS_CORN).add(ITEMS.get(seeds(ID_CORN)));
             getOrCreateBuilder(ItemTagsCoFH.SEEDS_EGGPLANT).add(ITEMS.get(seeds(ID_EGGPLANT)));
+            getOrCreateBuilder(ItemTagsCoFH.SEEDS_FLAX).add(ITEMS.get(seeds(ID_FLAX)));
             getOrCreateBuilder(ItemTagsCoFH.SEEDS_FROST_MELON).add(ITEMS.get(seeds(ID_FROST_MELON)));
             getOrCreateBuilder(ItemTagsCoFH.SEEDS_GREEN_BEAN).add(ITEMS.get(seeds(ID_GREEN_BEAN)));
             getOrCreateBuilder(ItemTagsCoFH.SEEDS_HOPS).add(ITEMS.get(seeds(ID_HOPS)));
@@ -111,6 +114,7 @@ public class TCulTagsProvider {
                     ItemTagsCoFH.SEEDS_COFFEE,
                     ItemTagsCoFH.SEEDS_CORN,
                     ItemTagsCoFH.SEEDS_EGGPLANT,
+                    ItemTagsCoFH.SEEDS_FLAX,
                     ItemTagsCoFH.SEEDS_FROST_MELON,
                     ItemTagsCoFH.SEEDS_GREEN_BEAN,
                     ItemTagsCoFH.SEEDS_HOPS,

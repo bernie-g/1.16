@@ -2,6 +2,7 @@ package cofh.thermal.core.util;
 
 import cofh.core.item.*;
 import cofh.lib.block.impl.crops.CropsBlockCoFH;
+import cofh.lib.block.impl.crops.CropsBlockMushroom;
 import cofh.lib.block.impl.crops.CropsBlockPerennial;
 import cofh.lib.block.impl.crops.CropsBlockTall;
 import cofh.lib.item.impl.BowItemCoFH;
@@ -195,11 +196,6 @@ public class RegistrationHelper {
 
     public static void registerTallAnnual(String id) {
 
-        registerTallAnnual(id, CropsBlockTall.DEFAULT_TALL_AGE);
-    }
-
-    public static void registerTallAnnual(String id, int splitAge) {
-
         BLOCKS.register(id, () -> new CropsBlockTall(create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F, 0.0F).sound(SoundType.CROP)).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(seeds(id))));
     }
 
@@ -236,6 +232,16 @@ public class RegistrationHelper {
             ITEMS.register(id, () -> new ItemCoFH(new Item.Properties().group(group)));
         }
         ITEMS.register(seeds(id), () -> new BlockNamedItemCoFH(BLOCKS.get(id), new Item.Properties().group(group)));
+    }
+
+    public static void registerSelfSeed(String id) {
+
+        registerSelfSeed(id, THERMAL_ITEMS);
+    }
+
+    public static void registerSelfSeed(String id, ItemGroup group) {
+
+        ITEMS.register(id, () -> new BlockNamedItemCoFH(BLOCKS.get(id), new Item.Properties().group(group)));
     }
 
     public static String block(String id) {

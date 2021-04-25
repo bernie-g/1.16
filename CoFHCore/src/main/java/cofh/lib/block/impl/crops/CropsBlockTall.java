@@ -23,10 +23,6 @@ import static cofh.lib.util.constants.Constants.*;
 
 public class CropsBlockTall extends CropsBlockCoFH {
 
-    public static final int DEFAULT_TALL_AGE = 4;
-
-    protected int tallAge = DEFAULT_TALL_AGE;
-
     public CropsBlockTall(Properties builder, PlantType type, int growLight, float growMod) {
 
         super(builder, type, growLight, growMod);
@@ -41,12 +37,6 @@ public class CropsBlockTall extends CropsBlockCoFH {
     public CropsBlockTall(Properties builder) {
 
         this(builder, 9, 1.25F);
-    }
-
-    public CropsBlockTall tallAge(int tallAge) {
-
-        this.tallAge = tallAge;
-        return this;
     }
 
     @Override
@@ -82,7 +72,7 @@ public class CropsBlockTall extends CropsBlockCoFH {
 
     protected int getTallAge() {
 
-        return tallAge;
+        return 4;
     }
 
     @Override

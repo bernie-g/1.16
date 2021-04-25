@@ -10,6 +10,7 @@ import static cofh.lib.util.constants.Constants.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.util.RegistrationHelper.block;
 import static cofh.thermal.cultivation.init.TCulIDs.ID_BARLEY;
+import static cofh.thermal.cultivation.init.TCulIDs.ID_FLAX;
 
 public class TCulBlockStateProvider extends BlockStateProviderCoFH {
 
@@ -30,6 +31,7 @@ public class TCulBlockStateProvider extends BlockStateProviderCoFH {
         DeferredRegisterCoFH<Block> reg = BLOCKS;
 
         axisBlock(reg.getSup(block(ID_BARLEY)), "barley_block", STORAGE);
+        axisBlock(reg.getSup(block(ID_FLAX)), "flax_block", STORAGE);
     }
 
 }

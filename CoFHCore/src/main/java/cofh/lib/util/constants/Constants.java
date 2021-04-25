@@ -12,6 +12,7 @@ import net.minecraft.state.properties.RailShape;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Direction.Plane;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraftforge.common.PlantType;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -39,10 +40,27 @@ public class Constants {
             Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D),
             Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)};
 
+    public static final VoxelShape[] MUSHROOMS_BY_AGE = new VoxelShape[]{
+            Block.makeCuboidShape(4.0D, 0.0D, 4.0D, 12.0D, 6.0D, 12.0D),
+            Block.makeCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D),
+            Block.makeCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 15.0D),
+            Block.makeCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 14.0D, 15.0D),
+            Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)};
+
     public static final VoxelShape[] TALL_CROPS_BY_AGE = new VoxelShape[]{
             Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D),
             Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D),
             Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D),
+            Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D),
+            Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D),
+            Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D),
+            Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D),
+            Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D)};
+
+    public static final VoxelShape[] TALL_CROPS_BY_AGE_ALT = new VoxelShape[]{
+            Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D),
+            Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D),
+            Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D),
             Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D),
             Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D),
             Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D),
@@ -82,7 +100,9 @@ public class Constants {
     public static final BooleanProperty TILLED = BooleanProperty.create("tilled");
     public static final BooleanProperty TOP = BooleanProperty.create("top");
 
-    public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 7);
+    public static final IntegerProperty AGE_0_4 = IntegerProperty.create("age", 0, 4);
+    public static final IntegerProperty AGE_0_6 = IntegerProperty.create("age", 0, 6);
+    public static final IntegerProperty AGE_0_7 = IntegerProperty.create("age", 0, 7);
     public static final IntegerProperty AGE_0_9 = IntegerProperty.create("age", 0, 9);
     public static final IntegerProperty AGE_0_10 = IntegerProperty.create("age", 0, 10);
 
@@ -191,6 +211,8 @@ public class Constants {
     public static float AUG_SCALE_MIN = 0.0F;
     public static float AUG_SCALE_MAX = 100.0F;
     // endregion
+
+    public static final PlantType FUNGUS = PlantType.get("fungus");
 
     // region TEXTURES
     public static final String PATH_GFX = ID_COFH_CORE + ":textures/";

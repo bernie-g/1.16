@@ -38,7 +38,7 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
 
     public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_FILTER);
 
-    protected static final int TICK_RATE = 20;
+    protected static final int TIME_CONSTANT = 20;
 
     protected static final IModelData MODEL_DATA = new ModelDataMap.Builder()
             .withInitial(UNDERLAY, ThermalTextures.DEVICE_COLLECTOR_UNDERLAY_LOC)
@@ -116,7 +116,7 @@ public class DeviceCollectorTile extends DeviceTileBase implements ITickableTile
 
     public int getTimeConstant() {
 
-        return TICK_RATE;
+        return TIME_CONSTANT;
     }
 
     protected void collectItemsAndXp() {
