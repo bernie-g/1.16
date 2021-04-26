@@ -693,6 +693,15 @@
   "item.thermal.tomato_seeds": "Tomato Seeds",
   "item.thermal.xp_stew": "Perspicacious Stew",
 
+  "item.thermal.glowstone_mushroom": "Glimmercap Mushroom",
+  "item.thermal.glowstone_mushroom_spores": "Glimmercap Spores",
+  "item.thermal.gunpowder_mushroom": "Blastcap Mushroom",
+  "item.thermal.gunpowder_mushroom_spores": "Blastcap Spores",
+  "item.thermal.redstone_mushroom": "Fluxtooth Mushroom",
+  "item.thermal.redstone_mushroom_spores": "Fluxtooth Spores",
+  "item.thermal.slime_mushroom": "Slimecap Mushroom",
+  "item.thermal.slime_mushroom_spores": "Slimecap Spores",
+
   "item.thermal.watering_can": "Watering Can",
   "item.thermal.watering_can.desc": "Improves plant growth using water.",
 

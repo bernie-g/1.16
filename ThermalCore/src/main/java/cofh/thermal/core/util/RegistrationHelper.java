@@ -2,7 +2,6 @@ package cofh.thermal.core.util;
 
 import cofh.core.item.*;
 import cofh.lib.block.impl.crops.CropsBlockCoFH;
-import cofh.lib.block.impl.crops.CropsBlockMushroom;
 import cofh.lib.block.impl.crops.CropsBlockPerennial;
 import cofh.lib.block.impl.crops.CropsBlockTall;
 import cofh.lib.item.impl.BowItemCoFH;
@@ -234,14 +233,14 @@ public class RegistrationHelper {
         ITEMS.register(seeds(id), () -> new BlockNamedItemCoFH(BLOCKS.get(id), new Item.Properties().group(group)));
     }
 
-    public static void registerSelfSeed(String id) {
+    public static void registerSpores(String id) {
 
-        registerSelfSeed(id, THERMAL_ITEMS);
+        registerSpores(id, THERMAL_ITEMS);
     }
 
-    public static void registerSelfSeed(String id, ItemGroup group) {
+    public static void registerSpores(String id, ItemGroup group) {
 
-        ITEMS.register(id, () -> new BlockNamedItemCoFH(BLOCKS.get(id), new Item.Properties().group(group)));
+        ITEMS.register(spores(id), () -> new BlockNamedItemCoFH(BLOCKS.get(id), new Item.Properties().group(group)));
     }
 
     public static String block(String id) {
@@ -252,6 +251,11 @@ public class RegistrationHelper {
     public static String seeds(String id) {
 
         return id + "_seeds";
+    }
+
+    public static String spores(String id) {
+
+        return id + "_spores";
     }
     // endregion
 

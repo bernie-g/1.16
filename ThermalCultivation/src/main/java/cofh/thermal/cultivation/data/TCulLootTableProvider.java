@@ -7,6 +7,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.loot.BlockLootTables;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.loot.IntClamper;
 import net.minecraft.loot.ItemLootEntry;
 import net.minecraft.loot.RandomValueRange;
@@ -17,8 +18,7 @@ import net.minecraft.loot.functions.SetCount;
 import static cofh.lib.util.constants.Constants.*;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
-import static cofh.thermal.core.util.RegistrationHelper.block;
-import static cofh.thermal.core.util.RegistrationHelper.seeds;
+import static cofh.thermal.core.util.RegistrationHelper.*;
 import static cofh.thermal.cultivation.init.TCulIDs.*;
 
 public class TCulLootTableProvider extends LootTableProviderCoFH {
@@ -59,6 +59,11 @@ public class TCulLootTableProvider extends LootTableProviderCoFH {
         createPerennialCropTable(ID_COFFEE);
         // createTallCropTable(ID_HOPS);
         createPerennialCropTable(ID_TEA);
+
+        createMushroomTable(ID_GLOWSTONE_MUSHROOM, Items.GLOWSTONE_DUST);
+        createMushroomTable(ID_GUNPOWDER_MUSHROOM, Items.GUNPOWDER);
+        createMushroomTable(ID_REDSTONE_MUSHROOM, Items.REDSTONE);
+        createMushroomTable(ID_SLIME_MUSHROOM, Items.SLIME_BALL);
 
         lootTables.put(regBlocks.get(ID_FROST_MELON),
                 BlockLootTables.droppingWithSilkTouch(regBlocks.get(ID_FROST_MELON),
@@ -109,6 +114,11 @@ public class TCulLootTableProvider extends LootTableProviderCoFH {
     protected void createFlaxCropTable(String id) {
 
         lootTables.put(BLOCKS.get(id), getCropTable(BLOCKS.get(id), ITEMS.get(id), ITEMS.get(seeds(id)), AGE_0_6, 6));
+    }
+
+    protected void createMushroomTable(String id, Item drop) {
+
+        lootTables.put(BLOCKS.get(id), getCropTable(BLOCKS.get(id), drop, ITEMS.get(spores(id)), AGE_0_4, 4));
     }
 
     protected void createTallCropTable(String id) {

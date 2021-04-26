@@ -13,8 +13,12 @@ import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.Rarity;
+import net.minecraft.util.Direction;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.ToolType;
 
+import static cofh.lib.util.constants.Constants.AGE_0_4;
 import static cofh.lib.util.constants.Constants.CHARGED;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
@@ -69,9 +73,27 @@ public class TCulBlocks {
         // registerTallPerennial(ID_HOPS);
         registerPerennial(ID_TEA);
 
-        registerMushroom(ID_GLOWSTONE_MUSHROOM);
+        //        registerMushroom(ID_GLOWSTONE_MUSHROOM);
+        //        registerMushroom(ID_GUNPOWDER_MUSHROOM);
+        //        registerMushroom(ID_REDSTONE_MUSHROOM);
+        //        registerMushroom(ID_SLIME_MUSHROOM);
+
+        BLOCKS.register(ID_GLOWSTONE_MUSHROOM, () -> new CropsBlockMushroom(create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F, 0.0F).sound(SoundType.NETHER_WART).setLightLevel((state) -> state.get(AGE_0_4) == 4 ? 12 : 0)).seed(ITEMS.getSup(spores(ID_GLOWSTONE_MUSHROOM))));
         registerMushroom(ID_GUNPOWDER_MUSHROOM);
-        registerMushroom(ID_REDSTONE_MUSHROOM);
+        BLOCKS.register(ID_REDSTONE_MUSHROOM, () -> new CropsBlockMushroom(create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F, 0.0F).sound(SoundType.NETHER_WART).setLightLevel((state) -> state.get(AGE_0_4) == 4 ? 7 : 0)) {
+
+            @Override
+            public boolean canProvidePower(BlockState state) {
+
+                return true;
+            }
+
+            @Override
+            public int getWeakPower(BlockState blockState, IBlockReader blockAccess, BlockPos pos, Direction side) {
+
+                return blockState.get(AGE_0_4) == 4 ? 7 : 0;
+            }
+        }.seed(ITEMS.getSup(spores(ID_REDSTONE_MUSHROOM))));
         registerMushroom(ID_SLIME_MUSHROOM);
 
         // STEM
@@ -123,7 +145,7 @@ public class TCulBlocks {
 
     public static void registerMushroom(String id) {
 
-        BLOCKS.register(id, () -> new CropsBlockMushroom(create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F, 0.0F).sound(SoundType.NETHER_WART)).crop(ITEMS.getSup(id)).seed(ITEMS.getSup(id)));
+        BLOCKS.register(id, () -> new CropsBlockMushroom(create(Material.PLANTS).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F, 0.0F).sound(SoundType.NETHER_WART)).seed(ITEMS.getSup(spores(id))));
     }
 
     // endregion

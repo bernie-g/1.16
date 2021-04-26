@@ -44,7 +44,7 @@ public class CropsBlockMushroom extends CropsBlockCoFH {
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
 
         int age = getAge(state);
-        if (age < getMaxAge() && ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt(10) == 0)) {
+        if (age < getMaxAge() && ForgeHooks.onCropsGrowPre(worldIn, pos, state, random.nextInt(20 - age) == 0)) {
             int newAge = age + 1 == getPostHarvestAge() ? getMaxAge() : age + 1;
             worldIn.setBlockState(pos, withAge(newAge), 2);
             ForgeHooks.onCropsGrowPost(worldIn, pos, state);

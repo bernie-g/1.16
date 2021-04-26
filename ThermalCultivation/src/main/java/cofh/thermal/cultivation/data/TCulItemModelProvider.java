@@ -10,8 +10,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
-import static cofh.thermal.core.util.RegistrationHelper.block;
-import static cofh.thermal.core.util.RegistrationHelper.seeds;
+import static cofh.thermal.core.util.RegistrationHelper.*;
 import static cofh.thermal.cultivation.init.TCulIDs.*;
 
 public class TCulItemModelProvider extends ItemModelProviderCoFH {
@@ -74,10 +73,10 @@ public class TCulItemModelProvider extends ItemModelProviderCoFH {
         generated(reg.getSup(seeds(ID_TOMATO)), SEEDS);
 
         // MUSHROOMS
-        generated(reg.getSup(ID_GLOWSTONE_MUSHROOM), MUSHROOMS);
-        generated(reg.getSup(ID_GUNPOWDER_MUSHROOM), MUSHROOMS);
-        generated(reg.getSup(ID_REDSTONE_MUSHROOM), MUSHROOMS);
-        generated(reg.getSup(ID_SLIME_MUSHROOM), MUSHROOMS);
+        generated(reg.getSup(spores(ID_GLOWSTONE_MUSHROOM)), MUSHROOMS);
+        generated(reg.getSup(spores(ID_GUNPOWDER_MUSHROOM)), MUSHROOMS);
+        generated(reg.getSup(spores(ID_REDSTONE_MUSHROOM)), MUSHROOMS);
+        generated(reg.getSup(spores(ID_SLIME_MUSHROOM)), MUSHROOMS);
 
         // FOODS
         //        generated(reg.getSup("dough"), FOODS);

@@ -59,10 +59,10 @@ public class TCulItems {
 
         registerCropAndSeed(ID_TEA);
 
-        registerSelfSeed(ID_GLOWSTONE_MUSHROOM);
-        registerSelfSeed(ID_GUNPOWDER_MUSHROOM);
-        registerSelfSeed(ID_REDSTONE_MUSHROOM);
-        registerSelfSeed(ID_SLIME_MUSHROOM);
+        registerSpores(ID_GLOWSTONE_MUSHROOM);
+        registerSpores(ID_GUNPOWDER_MUSHROOM);
+        registerSpores(ID_REDSTONE_MUSHROOM);
+        registerSpores(ID_SLIME_MUSHROOM);
 
         // OTHER
         ITEMS.register(ID_FROST_MELON_SLICE, () -> new ItemCoFH(new Item.Properties().group(THERMAL_ITEMS).food(FROST_MELON_SLICE).rarity(Rarity.UNCOMMON)));

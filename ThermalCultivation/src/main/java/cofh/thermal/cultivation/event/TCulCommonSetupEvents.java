@@ -49,6 +49,7 @@ public class TCulCommonSetupEvents {
             List<VillagerTrades.ITrade> apprenticeTrades = trades.get(2);
             apprenticeTrades.add(new BasicTrade(cloneStack(Items.EMERALD), cloneStack(ITEMS.get(seeds(ID_BARLEY)), 2), 12, 5, 0.05F));
             apprenticeTrades.add(new BasicTrade(cloneStack(Items.EMERALD), cloneStack(ITEMS.get(seeds(ID_CORN)), 2), 12, 5, 0.05F));
+            apprenticeTrades.add(new BasicTrade(cloneStack(Items.EMERALD), cloneStack(ITEMS.get(seeds(ID_FLAX)), 2), 12, 5, 0.05F));
             apprenticeTrades.add(new BasicTrade(cloneStack(Items.EMERALD), cloneStack(ITEMS.get(seeds(ID_ONION)), 2), 12, 5, 0.05F));
             apprenticeTrades.add(new BasicTrade(cloneStack(Items.EMERALD), cloneStack(ITEMS.get(seeds(ID_RADISH)), 2), 12, 5, 0.05F));
             apprenticeTrades.add(new BasicTrade(cloneStack(Items.EMERALD), cloneStack(ITEMS.get(seeds(ID_RICE)), 2), 12, 5, 0.05F));
