@@ -32,6 +32,12 @@ public class TCoreEntities {
         ENTITIES.register(ID_BLITZ_PROJECTILE, () -> EntityType.Builder.<BlitzProjectileEntity>create(BlitzProjectileEntity::new, EntityClassification.MISC).size(0.3125F, 0.3125F).build(ID_BLITZ_PROJECTILE));
 
         ENTITIES.register(ID_EXPLOSIVE_GRENADE, () -> EntityType.Builder.<ExplosiveGrenadeEntity>create(ExplosiveGrenadeEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).build(ID_EXPLOSIVE_GRENADE));
+
+        ENTITIES.register(ID_SLIME_GRENADE, () -> EntityType.Builder.<SlimeGrenadeEntity>create(SlimeGrenadeEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).build(ID_SLIME_GRENADE));
+        ENTITIES.register(ID_REDSTONE_GRENADE, () -> EntityType.Builder.<RedstoneGrenadeEntity>create(RedstoneGrenadeEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).build(ID_REDSTONE_GRENADE));
+        ENTITIES.register(ID_GLOWSTONE_GRENADE, () -> EntityType.Builder.<GlowstoneGrenadeEntity>create(GlowstoneGrenadeEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).build(ID_GLOWSTONE_GRENADE));
+        ENTITIES.register(ID_ENDER_GRENADE, () -> EntityType.Builder.<EnderGrenadeEntity>create(EnderGrenadeEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).build(ID_ENDER_GRENADE));
+
         ENTITIES.register(ID_PHYTO_GRENADE, () -> EntityType.Builder.<PhytoGrenadeEntity>create(PhytoGrenadeEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).build(ID_PHYTO_GRENADE));
 
         ENTITIES.register(ID_FIRE_GRENADE, () -> EntityType.Builder.<FireGrenadeEntity>create(FireGrenadeEntity::new, EntityClassification.MISC).size(0.25F, 0.25F).build(ID_FIRE_GRENADE));

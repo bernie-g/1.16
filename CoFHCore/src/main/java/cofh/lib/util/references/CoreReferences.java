@@ -114,6 +114,9 @@ public class CoreReferences {
     @ObjectHolder(ID_EFFECT_SHOCKED)
     public static final Effect SHOCKED = null;
 
+    @ObjectHolder(ID_EFFECT_SLIMED)
+    public static final Effect SLIMED = null;
+
     @ObjectHolder(ID_EFFECT_SUNDERED)
     public static final Effect SUNDERED = null;
 

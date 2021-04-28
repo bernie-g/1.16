@@ -63,7 +63,7 @@ public class NukeGrenadeEntity extends AbstractGrenadeEntity {
 
         if (Utils.isServerWorld(world)) {
             world.setBlockState(this.getPosition(), Blocks.AIR.getDefaultState());
-            damageNearbyEntities(this, world, this.getPosition(), radius * 2, func_234616_v_());
+            affectNearbyEntities(this, world, this.getPosition(), radius * 2, func_234616_v_());
             destroyBlocks(this, world, this.getPosition(), radius + radius / 2);
             world.createExplosion(this, this.getPosX(), this.getPosY(), this.getPosZ(), (float) explosionStrength, !this.isInWater(), explosionsBreakBlocks ? Explosion.Mode.BREAK : Explosion.Mode.NONE);
             this.world.setEntityState(this, (byte) 3);
@@ -96,7 +96,7 @@ public class NukeGrenadeEntity extends AbstractGrenadeEntity {
         }
     }
 
-    public static void damageNearbyEntities(Entity entity, World worldIn, BlockPos pos, int radius, @Nullable Entity source) {
+    public static void affectNearbyEntities(Entity entity, World worldIn, BlockPos pos, int radius, @Nullable Entity source) {
 
         AxisAlignedBB area = new AxisAlignedBB(pos.add(-radius, -radius, -radius), pos.add(1 + radius, 1 + radius, 1 + radius));
         double f2 = radius * radius;

@@ -537,25 +537,28 @@
   "item.thermal.rf_potato": "Capacitato",
   "item.thermal.rf_potato.desc": "Stores Redstone Flux.",
 
-  "item.thermal.phyto_grenade": "Phyto-Gronade",
-  "item.thermal.phyto_grenade.desc": "Throwable Phyto-Gro with increased area.",
-
   "item.thermal.explosive_grenade": "Grenade",
   "item.thermal.explosive_grenade.desc": "Smaller, throwable TNT.",
   "item.thermal.earth_grenade": "Tectonic Grenade",
   "item.thermal.earth_grenade.desc": "Breaks apart rocks and earth. Very effective for mining.",
+  "item.thermal.ender_grenade": "Ender Grenade - TODO?",
+  "item.thermal.ender_grenade.desc": "TODO",
   "item.thermal.fire_grenade": "Inferno Grenade",
   "item.thermal.fire_grenade.desc": "Ignites an area on impact.",
+  "item.thermal.glowstone_grenade": "Glownade",
+  "item.thermal.glowstone_grenade.desc": "Brightens an area on impact. Harms undead.",
   "item.thermal.ice_grenade": "Glacial Grenade",
   "item.thermal.ice_grenade.desc": "Freezes an area on impact.",
   "item.thermal.lightning_grenade": "Fulminating Grenade",
   "item.thermal.lightning_grenade.desc": "Shocks an area on impact. May bring the thunder.",
-
   "item.thermal.nuke_grenade": "Nuclear Grenade",
   "item.thermal.nuke_grenade.desc": "Not for use at close range.",
-
-  "block.thermal.phyto_tnt": "PNT",
-  "block.thermal.phyto_tnt.desc": "Spreads Phyto-Gro in a large area. Not throwable.",
+  "item.thermal.phyto_grenade": "Phyto-Gronade",
+  "item.thermal.phyto_grenade.desc": "Throwable Phyto-Gro with increased area.",
+  "item.thermal.redstone_grenade": "Redstone Grenade - TODO?",
+  "item.thermal.redstone_grenade.desc": "TODO",
+  "item.thermal.slime_grenade": "Slime Grenade",
+  "item.thermal.slime_grenade.desc": "Slimes targets in an area. High knockback.",
 
   "block.thermal.earth_tnt": "Tectonic Explosive",
   "block.thermal.earth_tnt.desc": "Breaks apart rocks and earth. Very effective for mining.",
@@ -565,9 +568,10 @@
   "block.thermal.ice_tnt.desc": "Freezes a large area.",
   "block.thermal.lightning_tnt": "Fulminating Explosive",
   "block.thermal.lightning_tnt.desc": "Shocks a large area. Very likely to bring the thunder.",
-
   "block.thermal.nuke_tnt": "Nuclear Explosive",
   "block.thermal.nuke_tnt.desc": "Do not stand anywhere close to this.",
+  "block.thermal.phyto_tnt": "PNT",
+  "block.thermal.phyto_tnt.desc": "Spreads Phyto-Gro in a large area. Not throwable.",
 
   "_comment": "========================================================================================================",
   "_comment": "Thermal Core - Vanilla",

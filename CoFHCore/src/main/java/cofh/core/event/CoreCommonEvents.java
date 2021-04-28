@@ -1,6 +1,7 @@
 package cofh.core.event;
 
 import cofh.core.init.CoreConfig;
+import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.helpers.XpHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -8,7 +9,10 @@ import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.player.ItemFishedEvent;
 import net.minecraftforge.event.entity.player.PlayerXpEvent;
 import net.minecraftforge.event.world.BlockEvent;
@@ -23,6 +27,7 @@ import java.util.Map;
 import static cofh.lib.util.Utils.getItemEnchantmentLevel;
 import static cofh.lib.util.Utils.getMaxEquippedEnchantmentLevel;
 import static cofh.lib.util.constants.Constants.ID_COFH_CORE;
+import static cofh.lib.util.references.CoreReferences.SLIMED;
 import static net.minecraft.enchantment.Enchantments.FEATHER_FALLING;
 import static net.minecraft.enchantment.Enchantments.MENDING;
 
@@ -48,6 +53,26 @@ public class CoreCommonEvents {
             if (encFeatherFalling > 0) {
                 event.setCanceled(true);
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void handleLivingFallEvent(LivingFallEvent event) {
+
+        if (event.isCanceled()) {
+            return;
+        }
+        LivingEntity living = event.getEntityLiving();
+        if (living.isPotionActive(SLIMED)) {
+            Vector3d vector3d = living.getMotion();
+            System.out.println("called:" + living);
+            System.out.println(event.getDistance());
+            System.out.println(vector3d);
+            living.setMotion(vector3d.x, MathHelper.clamp(event.getDistance() * 0.2D, -vector3d.y, 0.8D), vector3d.z);
+            System.out.println(living.getMotion());
+            living.velocityChanged = true;
+            event.setDistance(0.0F);
+            event.setDamageMultiplier(0.0F);
         }
     }
 

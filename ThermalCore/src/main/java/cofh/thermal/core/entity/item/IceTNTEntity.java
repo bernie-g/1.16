@@ -43,7 +43,7 @@ public class IceTNTEntity extends AbstractTNTEntity {
     protected void explode() {
 
         if (Utils.isServerWorld(world)) {
-            IceGrenadeEntity.damageNearbyEntities(this, world, this.getPosition(), radius, getTntPlacedBy());
+            IceGrenadeEntity.affectNearbyEntities(this, world, this.getPosition(), radius, getTntPlacedBy());
             AreaUtils.freezeSpecial(this, world, this.getPosition(), radius, true, true);
             AreaUtils.freezeNearbyGround(this, world, this.getPosition(), radius);
             AreaUtils.freezeAllWater(this, world, this.getPosition(), radius, permanentWater);

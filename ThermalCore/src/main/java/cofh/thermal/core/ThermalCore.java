@@ -196,6 +196,12 @@ public class ThermalCore {
         RenderingRegistry.registerEntityRenderingHandler(BLIZZ_PROJECTILE_ENTITY, BlizzProjectileRenderer::new);
 
         RenderingRegistry.registerEntityRenderingHandler(EXPLOSIVE_GRENADE_ENTITY, SpriteRendererCoFH::new);
+
+        RenderingRegistry.registerEntityRenderingHandler(SLIME_GRENADE_ENTITY, SpriteRendererCoFH::new);
+        RenderingRegistry.registerEntityRenderingHandler(REDSTONE_GRENADE_ENTITY, SpriteRendererCoFH::new);
+        RenderingRegistry.registerEntityRenderingHandler(GLOWSTONE_GRENADE_ENTITY, SpriteRendererCoFH::new);
+        RenderingRegistry.registerEntityRenderingHandler(ENDER_GRENADE_ENTITY, SpriteRendererCoFH::new);
+
         RenderingRegistry.registerEntityRenderingHandler(PHYTO_GRENADE_ENTITY, SpriteRendererCoFH::new);
 
         RenderingRegistry.registerEntityRenderingHandler(FIRE_GRENADE_ENTITY, SpriteRendererCoFH::new);

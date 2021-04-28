@@ -50,7 +50,7 @@ public class IceTNTMinecartEntity extends AbstractTNTMinecartEntity {
     protected void explode() {
 
         if (Utils.isServerWorld(world)) {
-            IceGrenadeEntity.damageNearbyEntities(this, world, this.getPosition(), radius, null);
+            IceGrenadeEntity.affectNearbyEntities(this, world, this.getPosition(), radius, null);
             AreaUtils.freezeSpecial(this, world, this.getPosition(), radius, true, true);
             AreaUtils.freezeNearbyGround(this, world, this.getPosition(), radius);
             AreaUtils.freezeAllWater(this, world, this.getPosition(), radius, permanentWater);

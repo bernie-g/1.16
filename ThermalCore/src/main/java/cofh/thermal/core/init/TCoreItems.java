@@ -207,6 +207,68 @@ public class TCoreItems {
             }
 
         }, new Item.Properties().group(group).maxStackSize(16)));
+
+        registerItem("slime_grenade", () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(World world, LivingEntity living) {
+
+                return new SlimeGrenadeEntity(world, living);
+            }
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(World world, double posX, double posY, double posZ) {
+
+                return new SlimeGrenadeEntity(world, posX, posY, posZ);
+            }
+
+        }, new Item.Properties().group(group).maxStackSize(16)));
+        registerItem("redstone_grenade", () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(World world, LivingEntity living) {
+
+                return new RedstoneGrenadeEntity(world, living);
+            }
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(World world, double posX, double posY, double posZ) {
+
+                return new RedstoneGrenadeEntity(world, posX, posY, posZ);
+            }
+
+        }, new Item.Properties().group(group).maxStackSize(16)));
+        registerItem("glowstone_grenade", () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(World world, LivingEntity living) {
+
+                return new GlowstoneGrenadeEntity(world, living);
+            }
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(World world, double posX, double posY, double posZ) {
+
+                return new GlowstoneGrenadeEntity(world, posX, posY, posZ);
+            }
+
+        }, new Item.Properties().group(group).maxStackSize(16)));
+        registerItem("ender_grenade", () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(World world, LivingEntity living) {
+
+                return new EnderGrenadeEntity(world, living);
+            }
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(World world, double posX, double posY, double posZ) {
+
+                return new EnderGrenadeEntity(world, posX, posY, posZ);
+            }
+
+        }, new Item.Properties().group(group).maxStackSize(16)));
+
         registerItem("phyto_grenade", () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
 
             @Override
@@ -223,21 +285,6 @@ public class TCoreItems {
 
         }, new Item.Properties().group(group).maxStackSize(16)).setShowInGroups(getFlag(FLAG_PHYTOGRO_EXPLOSIVES)));
 
-        registerItem("fire_grenade", () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(World world, LivingEntity living) {
-
-                return new FireGrenadeEntity(world, living);
-            }
-
-            @Override
-            public AbstractGrenadeEntity createGrenade(World world, double posX, double posY, double posZ) {
-
-                return new FireGrenadeEntity(world, posX, posY, posZ);
-            }
-
-        }, new Item.Properties().group(group).maxStackSize(16)).setShowInGroups(getFlag(FLAG_ELEMENTAL_EXPLOSIVES)));
         registerItem("earth_grenade", () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
 
             @Override
@@ -250,6 +297,21 @@ public class TCoreItems {
             public AbstractGrenadeEntity createGrenade(World world, double posX, double posY, double posZ) {
 
                 return new EarthGrenadeEntity(world, posX, posY, posZ);
+            }
+
+        }, new Item.Properties().group(group).maxStackSize(16)).setShowInGroups(getFlag(FLAG_ELEMENTAL_EXPLOSIVES)));
+        registerItem("fire_grenade", () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(World world, LivingEntity living) {
+
+                return new FireGrenadeEntity(world, living);
+            }
+
+            @Override
+            public AbstractGrenadeEntity createGrenade(World world, double posX, double posY, double posZ) {
+
+                return new FireGrenadeEntity(world, posX, posY, posZ);
             }
 
         }, new Item.Properties().group(group).maxStackSize(16)).setShowInGroups(getFlag(FLAG_ELEMENTAL_EXPLOSIVES)));

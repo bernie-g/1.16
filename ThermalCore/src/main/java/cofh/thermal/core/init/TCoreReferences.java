@@ -51,6 +51,16 @@ public class TCoreReferences {
 
     @ObjectHolder(ID_EXPLOSIVE_GRENADE)
     public static final EntityType<ExplosiveGrenadeEntity> EXPLOSIVE_GRENADE_ENTITY = null;
+
+    @ObjectHolder(ID_SLIME_GRENADE)
+    public static final EntityType<SlimeGrenadeEntity> SLIME_GRENADE_ENTITY = null;
+    @ObjectHolder(ID_REDSTONE_GRENADE)
+    public static final EntityType<RedstoneGrenadeEntity> REDSTONE_GRENADE_ENTITY = null;
+    @ObjectHolder(ID_GLOWSTONE_GRENADE)
+    public static final EntityType<GlowstoneGrenadeEntity> GLOWSTONE_GRENADE_ENTITY = null;
+    @ObjectHolder(ID_ENDER_GRENADE)
+    public static final EntityType<EnderGrenadeEntity> ENDER_GRENADE_ENTITY = null;
+
     @ObjectHolder(ID_PHYTO_GRENADE)
     public static final EntityType<PhytoGrenadeEntity> PHYTO_GRENADE_ENTITY = null;
 
@@ -85,6 +95,16 @@ public class TCoreReferences {
     // region ITEMS
     @ObjectHolder(ID_EXPLOSIVE_GRENADE)
     public static final Item EXPLOSIVE_GRENADE_ITEM = null;
+
+    @ObjectHolder(ID_SLIME_GRENADE)
+    public static final Item SLIME_GRENADE_ITEM = null;
+    @ObjectHolder(ID_REDSTONE_GRENADE)
+    public static final Item REDSTONE_GRENADE_ITEM = null;
+    @ObjectHolder(ID_GLOWSTONE_GRENADE)
+    public static final Item GLOWSTONE_GRENADE_ITEM = null;
+    @ObjectHolder(ID_ENDER_GRENADE)
+    public static final Item ENDER_GRENADE_ITEM = null;
+
     @ObjectHolder(ID_PHYTO_GRENADE)
     public static final Item PHYTO_GRENADE_ITEM = null;
 

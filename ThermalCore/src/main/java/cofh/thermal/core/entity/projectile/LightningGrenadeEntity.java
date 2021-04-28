@@ -25,7 +25,7 @@ import static cofh.thermal.core.init.TCoreReferences.LIGHTNING_GRENADE_ITEM;
 public class LightningGrenadeEntity extends AbstractGrenadeEntity {
 
     public static int effectAmplifier = 1;
-    public static int effectDuration = 200;
+    public static int effectDuration = 300;
 
     public LightningGrenadeEntity(EntityType<? extends ProjectileItemEntity> type, World worldIn) {
 

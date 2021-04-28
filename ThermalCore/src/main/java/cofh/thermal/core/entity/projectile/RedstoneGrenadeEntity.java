@@ -9,37 +9,38 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.particles.ParticleTypes;
+import net.minecraft.particles.RedstoneParticleData;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-import static cofh.thermal.core.init.TCoreReferences.FIRE_GRENADE_ENTITY;
-import static cofh.thermal.core.init.TCoreReferences.FIRE_GRENADE_ITEM;
+import static cofh.thermal.core.init.TCoreReferences.REDSTONE_GRENADE_ENTITY;
+import static cofh.thermal.core.init.TCoreReferences.REDSTONE_GRENADE_ITEM;
 
-public class FireGrenadeEntity extends AbstractGrenadeEntity {
+public class RedstoneGrenadeEntity extends AbstractGrenadeEntity {
 
-    public static int effectDuration = 15; // In seconds
+    public static int effectDuration = 300;
 
-    public FireGrenadeEntity(EntityType<? extends ProjectileItemEntity> type, World worldIn) {
+    public RedstoneGrenadeEntity(EntityType<? extends ProjectileItemEntity> type, World worldIn) {
 
         super(type, worldIn);
     }
 
-    public FireGrenadeEntity(World worldIn, double x, double y, double z) {
+    public RedstoneGrenadeEntity(World worldIn, double x, double y, double z) {
 
-        super(FIRE_GRENADE_ENTITY, x, y, z, worldIn);
+        super(REDSTONE_GRENADE_ENTITY, x, y, z, worldIn);
     }
 
-    public FireGrenadeEntity(World worldIn, LivingEntity livingEntityIn) {
+    public RedstoneGrenadeEntity(World worldIn, LivingEntity livingEntityIn) {
 
-        super(FIRE_GRENADE_ENTITY, livingEntityIn, worldIn);
+        super(REDSTONE_GRENADE_ENTITY, livingEntityIn, worldIn);
     }
 
     @Override
     protected Item getDefaultItem() {
 
-        return FIRE_GRENADE_ITEM;
+        return REDSTONE_GRENADE_ITEM;
     }
 
     @Override
@@ -47,9 +48,7 @@ public class FireGrenadeEntity extends AbstractGrenadeEntity {
 
         if (Utils.isServerWorld(world)) {
             if (!this.isInWater()) {
-                AreaUtils.igniteNearbyEntities(this, world, this.getPosition(), radius, effectDuration);
-                AreaUtils.igniteSpecial(this, world, this.getPosition(), radius, true, true, func_234616_v_());
-                AreaUtils.igniteNearbyGround(this, world, this.getPosition(), radius, 0.2);
+                AreaUtils.transformSignalAir(this, world, this.getPosition(), radius);
                 makeAreaOfEffectCloud();
             }
             this.world.setEntityState(this, (byte) 3);
@@ -66,7 +65,7 @@ public class FireGrenadeEntity extends AbstractGrenadeEntity {
 
         AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(world, getPosX(), getPosY(), getPosZ());
         cloud.setRadius(1);
-        cloud.setParticleData(ParticleTypes.FLAME);
+        cloud.setParticleData(RedstoneParticleData.REDSTONE_DUST);
         cloud.setDuration(CLOUD_DURATION);
         cloud.setWaitTime(0);
         cloud.setRadiusPerTick((radius - cloud.getRadius()) / (float) cloud.getDuration());

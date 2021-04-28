@@ -3,10 +3,7 @@ package cofh.thermal.core.entity.projectile;
 import cofh.lib.entity.AbstractGrenadeEntity;
 import cofh.lib.util.AreaUtils;
 import cofh.lib.util.Utils;
-import net.minecraft.entity.AreaEffectCloudEntity;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.*;
 import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.particles.ParticleTypes;
@@ -21,51 +18,46 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-
 import java.util.List;
 
-import static cofh.lib.util.references.CoreReferences.CHILLED;
-import static cofh.thermal.core.init.TCoreReferences.ICE_GRENADE_ENTITY;
-import static cofh.thermal.core.init.TCoreReferences.ICE_GRENADE_ITEM;
-import static cofh.thermal.lib.common.ThermalConfig.permanentLava;
-import static cofh.thermal.lib.common.ThermalConfig.permanentWater;
+import static cofh.thermal.core.init.TCoreReferences.GLOWSTONE_GRENADE_ENTITY;
+import static cofh.thermal.core.init.TCoreReferences.GLOWSTONE_GRENADE_ITEM;
+import static net.minecraft.potion.Effects.GLOWING;
 
-public class IceGrenadeEntity extends AbstractGrenadeEntity {
+public class GlowstoneGrenadeEntity extends AbstractGrenadeEntity {
 
-    public static int effectAmplifier = 1;
-    public static int effectDuration = 300;
+    public static int effectDuration = 15; // In seconds
 
-    public IceGrenadeEntity(EntityType<? extends ProjectileItemEntity> type, World worldIn) {
+    public GlowstoneGrenadeEntity(EntityType<? extends ProjectileItemEntity> type, World worldIn) {
 
         super(type, worldIn);
     }
 
-    public IceGrenadeEntity(World worldIn, double x, double y, double z) {
+    public GlowstoneGrenadeEntity(World worldIn, double x, double y, double z) {
 
-        super(ICE_GRENADE_ENTITY, x, y, z, worldIn);
+        super(GLOWSTONE_GRENADE_ENTITY, x, y, z, worldIn);
     }
 
-    public IceGrenadeEntity(World worldIn, LivingEntity livingEntityIn) {
+    public GlowstoneGrenadeEntity(World worldIn, LivingEntity livingEntityIn) {
 
-        super(ICE_GRENADE_ENTITY, livingEntityIn, worldIn);
+        super(GLOWSTONE_GRENADE_ENTITY, livingEntityIn, worldIn);
     }
 
     @Override
     protected Item getDefaultItem() {
 
-        return ICE_GRENADE_ITEM;
+        return GLOWSTONE_GRENADE_ITEM;
     }
 
     @Override
     protected void onImpact(RayTraceResult result) {
 
         if (Utils.isServerWorld(world)) {
-            affectNearbyEntities(this, world, this.getPosition(), radius, func_234616_v_());
-            AreaUtils.freezeSpecial(this, world, this.getPosition(), radius, true, true);
-            AreaUtils.freezeNearbyGround(this, world, this.getPosition(), radius);
-            AreaUtils.freezeAllWater(this, world, this.getPosition(), radius, permanentWater);
-            AreaUtils.freezeAllLava(this, world, this.getPosition(), radius, permanentLava);
-            makeAreaOfEffectCloud();
+            if (!this.isInWater()) {
+                affectNearbyEntities(this, world, this.getPosition(), radius, func_234616_v_());
+                AreaUtils.transformGlowAir(this, world, this.getPosition(), radius);
+                makeAreaOfEffectCloud();
+            }
             this.world.setEntityState(this, (byte) 3);
             this.remove();
         }
@@ -80,7 +72,7 @@ public class IceGrenadeEntity extends AbstractGrenadeEntity {
 
         AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(world, getPosX(), getPosY(), getPosZ());
         cloud.setRadius(1);
-        cloud.setParticleData(ParticleTypes.ITEM_SNOWBALL);
+        cloud.setParticleData(ParticleTypes.INSTANT_EFFECT);
         cloud.setDuration(CLOUD_DURATION);
         cloud.setWaitTime(0);
         cloud.setRadiusPerTick((radius - cloud.getRadius()) / (float) cloud.getDuration());
@@ -92,10 +84,12 @@ public class IceGrenadeEntity extends AbstractGrenadeEntity {
 
         AxisAlignedBB area = new AxisAlignedBB(pos.add(-radius, -radius, -radius), pos.add(1 + radius, 1 + radius, 1 + radius));
         List<LivingEntity> mobs = worldIn.getEntitiesWithinAABB(LivingEntity.class, area, EntityPredicates.IS_ALIVE);
-
         for (LivingEntity mob : mobs) {
-            mob.attackEntityFrom(DamageSource.causeExplosionDamage(source instanceof LivingEntity ? (LivingEntity) source : null), mob.isImmuneToFire() ? 4.0F : 1.0F);
-            mob.addPotionEffect(new EffectInstance(CHILLED, effectDuration, effectAmplifier, false, false));
+            mob.addPotionEffect(new EffectInstance(GLOWING, effectDuration * 20, 0, false, false));
+            if (mob.getCreatureAttribute() == CreatureAttribute.UNDEAD) {
+                mob.attackEntityFrom(DamageSource.causeExplosionDamage(source instanceof LivingEntity ? (LivingEntity) source : null), 4.0F);
+                mob.setFire(effectDuration);
+            }
         }
     }
 

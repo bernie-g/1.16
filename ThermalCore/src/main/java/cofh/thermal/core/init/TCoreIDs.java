@@ -155,6 +155,12 @@ public class TCoreIDs {
     public static final String ID_BLIZZ_PROJECTILE = "blizz_projectile";
 
     public static final String ID_EXPLOSIVE_GRENADE = "grenade";
+
+    public static final String ID_SLIME_GRENADE = "slime_grenade";
+    public static final String ID_REDSTONE_GRENADE = "redstone_grenade";
+    public static final String ID_GLOWSTONE_GRENADE = "glowstone_grenade";
+    public static final String ID_ENDER_GRENADE = "ender_grenade";
+
     public static final String ID_PHYTO_GRENADE = "phyto_grenade";
 
     public static final String ID_FIRE_GRENADE = "fire_grenade";
@@ -163,6 +169,11 @@ public class TCoreIDs {
     public static final String ID_LIGHTNING_GRENADE = "lightning_grenade";
 
     public static final String ID_NUKE_GRENADE = "nuke_grenade";
+
+    public static final String ID_SLIME_TNT = "slime_tnt";
+    public static final String ID_REDSTONE_TNT = "redstone_tnt";
+    public static final String ID_GLOWSTONE_TNT = "glowstone_tnt";
+    public static final String ID_ENDER_TNT = "ender_tnt";
 
     public static final String ID_PHYTO_TNT = "phyto_tnt";
 

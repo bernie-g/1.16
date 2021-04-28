@@ -7,6 +7,8 @@ import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.monster.EndermanEntity;
+import net.minecraft.entity.monster.EndermiteEntity;
 import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.particles.ParticleTypes;
@@ -24,48 +26,45 @@ import javax.annotation.Nullable;
 
 import java.util.List;
 
-import static cofh.lib.util.references.CoreReferences.CHILLED;
-import static cofh.thermal.core.init.TCoreReferences.ICE_GRENADE_ENTITY;
-import static cofh.thermal.core.init.TCoreReferences.ICE_GRENADE_ITEM;
-import static cofh.thermal.lib.common.ThermalConfig.permanentLava;
-import static cofh.thermal.lib.common.ThermalConfig.permanentWater;
+import static cofh.lib.util.references.CoreReferences.ENDERFERENCE;
+import static cofh.thermal.core.init.TCoreReferences.ENDER_GRENADE_ENTITY;
+import static cofh.thermal.core.init.TCoreReferences.ENDER_GRENADE_ITEM;
+import static net.minecraft.potion.Effects.GLOWING;
 
-public class IceGrenadeEntity extends AbstractGrenadeEntity {
+public class EnderGrenadeEntity extends AbstractGrenadeEntity {
 
-    public static int effectAmplifier = 1;
     public static int effectDuration = 300;
 
-    public IceGrenadeEntity(EntityType<? extends ProjectileItemEntity> type, World worldIn) {
+    public EnderGrenadeEntity(EntityType<? extends ProjectileItemEntity> type, World worldIn) {
 
         super(type, worldIn);
     }
 
-    public IceGrenadeEntity(World worldIn, double x, double y, double z) {
+    public EnderGrenadeEntity(World worldIn, double x, double y, double z) {
 
-        super(ICE_GRENADE_ENTITY, x, y, z, worldIn);
+        super(ENDER_GRENADE_ENTITY, x, y, z, worldIn);
     }
 
-    public IceGrenadeEntity(World worldIn, LivingEntity livingEntityIn) {
+    public EnderGrenadeEntity(World worldIn, LivingEntity livingEntityIn) {
 
-        super(ICE_GRENADE_ENTITY, livingEntityIn, worldIn);
+        super(ENDER_GRENADE_ENTITY, livingEntityIn, worldIn);
     }
 
     @Override
     protected Item getDefaultItem() {
 
-        return ICE_GRENADE_ITEM;
+        return ENDER_GRENADE_ITEM;
     }
 
     @Override
     protected void onImpact(RayTraceResult result) {
 
         if (Utils.isServerWorld(world)) {
-            affectNearbyEntities(this, world, this.getPosition(), radius, func_234616_v_());
-            AreaUtils.freezeSpecial(this, world, this.getPosition(), radius, true, true);
-            AreaUtils.freezeNearbyGround(this, world, this.getPosition(), radius);
-            AreaUtils.freezeAllWater(this, world, this.getPosition(), radius, permanentWater);
-            AreaUtils.freezeAllLava(this, world, this.getPosition(), radius, permanentLava);
-            makeAreaOfEffectCloud();
+            if (!this.isInWater()) {
+                affectNearbyEntities(this, world, this.getPosition(), radius, func_234616_v_());
+                AreaUtils.transformEnderAir(this, world, this.getPosition(), radius);
+                makeAreaOfEffectCloud();
+            }
             this.world.setEntityState(this, (byte) 3);
             this.remove();
         }
@@ -80,7 +79,7 @@ public class IceGrenadeEntity extends AbstractGrenadeEntity {
 
         AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(world, getPosX(), getPosY(), getPosZ());
         cloud.setRadius(1);
-        cloud.setParticleData(ParticleTypes.ITEM_SNOWBALL);
+        cloud.setParticleData(ParticleTypes.PORTAL);
         cloud.setDuration(CLOUD_DURATION);
         cloud.setWaitTime(0);
         cloud.setRadiusPerTick((radius - cloud.getRadius()) / (float) cloud.getDuration());
@@ -94,8 +93,10 @@ public class IceGrenadeEntity extends AbstractGrenadeEntity {
         List<LivingEntity> mobs = worldIn.getEntitiesWithinAABB(LivingEntity.class, area, EntityPredicates.IS_ALIVE);
 
         for (LivingEntity mob : mobs) {
-            mob.attackEntityFrom(DamageSource.causeExplosionDamage(source instanceof LivingEntity ? (LivingEntity) source : null), mob.isImmuneToFire() ? 4.0F : 1.0F);
-            mob.addPotionEffect(new EffectInstance(CHILLED, effectDuration, effectAmplifier, false, false));
+            if (mob instanceof EndermanEntity || mob instanceof EndermiteEntity) {
+                mob.addPotionEffect(new EffectInstance(ENDERFERENCE, effectDuration, 0, false, true));
+                mob.attackEntityFrom(DamageSource.causeExplosionDamage(source instanceof LivingEntity ? (LivingEntity) source : null), 4.0F);
+            }
         }
     }
 

@@ -1078,6 +1078,46 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .addCriterion("has_gunpowder", hasItem(Tags.Items.GUNPOWDER))
                 .build(consumer, ID_THERMAL + ":explosive_grenade_4");
 
+        ShapedRecipeBuilder.shapedRecipe(reg.get("slime_grenade"), 4)
+                .key('G', Tags.Items.GUNPOWDER)
+                .key('I', Tags.Items.INGOTS_IRON)
+                .key('P', Tags.Items.SLIMEBALLS)
+                .patternLine("GPG")
+                .patternLine("PIP")
+                .patternLine("GPG")
+                .addCriterion("has_gunpowder", hasItem(Tags.Items.SLIMEBALLS))
+                .build(consumer, ID_THERMAL + ":slime_grenade_4");
+
+        ShapedRecipeBuilder.shapedRecipe(reg.get("redstone_grenade"), 4)
+                .key('G', Tags.Items.GUNPOWDER)
+                .key('I', Tags.Items.INGOTS_IRON)
+                .key('P', Tags.Items.DUSTS_REDSTONE)
+                .patternLine("GPG")
+                .patternLine("PIP")
+                .patternLine("GPG")
+                .addCriterion("has_gunpowder", hasItem(Tags.Items.DUSTS_REDSTONE))
+                .build(consumer, ID_THERMAL + ":redstone_grenade_4");
+
+        ShapedRecipeBuilder.shapedRecipe(reg.get("glowstone_grenade"), 4)
+                .key('G', Tags.Items.GUNPOWDER)
+                .key('I', Tags.Items.INGOTS_IRON)
+                .key('P', Tags.Items.DUSTS_GLOWSTONE)
+                .patternLine("GPG")
+                .patternLine("PIP")
+                .patternLine("GPG")
+                .addCriterion("has_gunpowder", hasItem(Tags.Items.DUSTS_GLOWSTONE))
+                .build(consumer, ID_THERMAL + ":glowstone_grenade_4");
+
+        ShapedRecipeBuilder.shapedRecipe(reg.get("ender_grenade"), 4)
+                .key('G', Tags.Items.GUNPOWDER)
+                .key('I', Tags.Items.INGOTS_IRON)
+                .key('P', Tags.Items.ENDER_PEARLS)
+                .patternLine("GPG")
+                .patternLine("PIP")
+                .patternLine("GPG")
+                .addCriterion("has_gunpowder", hasItem(Tags.Items.ENDER_PEARLS))
+                .build(consumer, ID_THERMAL + ":ender_grenade_4");
+
         ShapedRecipeBuilder.shapedRecipe(reg.get("phyto_grenade"), 4)
                 .key('G', Tags.Items.GUNPOWDER)
                 .key('I', Tags.Items.INGOTS_IRON)
@@ -1088,16 +1128,6 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .addCriterion("has_phytogro", hasItem(reg.get("phytogro")))
                 .build(withConditions(consumer).flag(FLAG_PHYTOGRO_EXPLOSIVES), ID_THERMAL + ":phyto_grenade_4");
 
-        ShapedRecipeBuilder.shapedRecipe(reg.get("fire_grenade"), 4)
-                .key('G', Tags.Items.GUNPOWDER)
-                .key('I', Tags.Items.INGOTS_IRON)
-                .key('P', Items.BLAZE_POWDER)
-                .patternLine("GPG")
-                .patternLine("PIP")
-                .patternLine("GPG")
-                .addCriterion("has_blaze_powder", hasItem(Items.BLAZE_POWDER))
-                .build(withConditions(consumer).flag(FLAG_ELEMENTAL_EXPLOSIVES), ID_THERMAL + ":fire_grenade_4");
-
         ShapedRecipeBuilder.shapedRecipe(reg.get("earth_grenade"), 4)
                 .key('G', Tags.Items.GUNPOWDER)
                 .key('I', Tags.Items.INGOTS_IRON)
@@ -1107,6 +1137,16 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .patternLine("GPG")
                 .addCriterion("has_basalz_powder", hasItem(reg.get("basalz_powder")))
                 .build(withConditions(consumer).flag(FLAG_ELEMENTAL_EXPLOSIVES), ID_THERMAL + ":earth_grenade_4");
+
+        ShapedRecipeBuilder.shapedRecipe(reg.get("fire_grenade"), 4)
+                .key('G', Tags.Items.GUNPOWDER)
+                .key('I', Tags.Items.INGOTS_IRON)
+                .key('P', Items.BLAZE_POWDER)
+                .patternLine("GPG")
+                .patternLine("PIP")
+                .patternLine("GPG")
+                .addCriterion("has_blaze_powder", hasItem(Items.BLAZE_POWDER))
+                .build(withConditions(consumer).flag(FLAG_ELEMENTAL_EXPLOSIVES), ID_THERMAL + ":fire_grenade_4");
 
         ShapedRecipeBuilder.shapedRecipe(reg.get("ice_grenade"), 4)
                 .key('G', Tags.Items.GUNPOWDER)
@@ -1137,15 +1177,6 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .addCriterion("has_phytogro", hasItem(reg.get("phytogro")))
                 .build(withConditions(consumer).flag(FLAG_PHYTOGRO_EXPLOSIVES));
 
-        ShapedRecipeBuilder.shapedRecipe(reg.get("fire_tnt"))
-                .key('G', Tags.Items.GUNPOWDER)
-                .key('P', Items.BLAZE_POWDER)
-                .patternLine("GPG")
-                .patternLine("PGP")
-                .patternLine("GPG")
-                .addCriterion("has_blaze_powder", hasItem(Items.BLAZE_POWDER))
-                .build(withConditions(consumer).flag(FLAG_ELEMENTAL_EXPLOSIVES));
-
         ShapedRecipeBuilder.shapedRecipe(reg.get("earth_tnt"))
                 .key('G', Tags.Items.GUNPOWDER)
                 .key('P', reg.get("basalz_powder"))
@@ -1153,6 +1184,15 @@ public class TCoreRecipeProvider extends RecipeProviderCoFH {
                 .patternLine("PGP")
                 .patternLine("GPG")
                 .addCriterion("has_basalz_powder", hasItem(reg.get("basalz_powder")))
+                .build(withConditions(consumer).flag(FLAG_ELEMENTAL_EXPLOSIVES));
+
+        ShapedRecipeBuilder.shapedRecipe(reg.get("fire_tnt"))
+                .key('G', Tags.Items.GUNPOWDER)
+                .key('P', Items.BLAZE_POWDER)
+                .patternLine("GPG")
+                .patternLine("PGP")
+                .patternLine("GPG")
+                .addCriterion("has_blaze_powder", hasItem(Items.BLAZE_POWDER))
                 .build(withConditions(consumer).flag(FLAG_ELEMENTAL_EXPLOSIVES));
 
         ShapedRecipeBuilder.shapedRecipe(reg.get("ice_tnt"))
