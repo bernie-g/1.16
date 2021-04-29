@@ -78,7 +78,19 @@ public class TCoreBlocks {
         fire.setFireInfo(BLOCKS.get(ID_TAR_BLOCK), 5, 5);
         fire.setFireInfo(BLOCKS.get(ID_ROSIN_BLOCK), 5, 5);
 
+        DispenserBlock.registerDispenseBehavior(BLOCKS.get(ID_SLIME_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
+        DispenserBlock.registerDispenseBehavior(BLOCKS.get(ID_REDSTONE_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
+        DispenserBlock.registerDispenseBehavior(BLOCKS.get(ID_GLOWSTONE_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
+        DispenserBlock.registerDispenseBehavior(BLOCKS.get(ID_ENDER_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
+
         DispenserBlock.registerDispenseBehavior(BLOCKS.get(ID_PHYTO_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
+
+        DispenserBlock.registerDispenseBehavior(BLOCKS.get(ID_EARTH_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
+        DispenserBlock.registerDispenseBehavior(BLOCKS.get(ID_FIRE_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
+        DispenserBlock.registerDispenseBehavior(BLOCKS.get(ID_ICE_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
+        DispenserBlock.registerDispenseBehavior(BLOCKS.get(ID_LIGHTNING_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
+
+        DispenserBlock.registerDispenseBehavior(BLOCKS.get(ID_NUKE_TNT), TNTBlockCoFH.DISPENSER_BEHAVIOR);
     }
 
     // region HELPERS
@@ -262,10 +274,10 @@ public class TCoreBlocks {
 
     private static void registerMisc() {
 
-        registerBlock(ID_SLIME_TNT, () -> new TNTBlockCoFH(PhytoTNTEntity::new, create(Material.TNT, MaterialColor.GREEN_TERRACOTTA).hardnessAndResistance(0.0F).sound(SoundType.PLANT)), getFlag(FLAG_PHYTOGRO_EXPLOSIVES));
-        registerBlock(ID_REDSTONE_TNT, () -> new TNTBlockCoFH(PhytoTNTEntity::new, create(Material.TNT, MaterialColor.RED).hardnessAndResistance(0.0F).sound(SoundType.PLANT)), getFlag(FLAG_PHYTOGRO_EXPLOSIVES));
-        registerBlock(ID_GLOWSTONE_TNT, () -> new TNTBlockCoFH(PhytoTNTEntity::new, create(Material.TNT, MaterialColor.YELLOW).hardnessAndResistance(0.0F).sound(SoundType.PLANT)), getFlag(FLAG_PHYTOGRO_EXPLOSIVES));
-        registerBlock(ID_ENDER_TNT, () -> new TNTBlockCoFH(PhytoTNTEntity::new, create(Material.TNT, MaterialColor.GREEN).hardnessAndResistance(0.0F).sound(SoundType.PLANT)), getFlag(FLAG_PHYTOGRO_EXPLOSIVES));
+        registerBlock(ID_SLIME_TNT, () -> new TNTBlockCoFH(PhytoTNTEntity::new, create(Material.TNT, MaterialColor.GREEN_TERRACOTTA).hardnessAndResistance(0.0F).sound(SoundType.PLANT)), getFlag(FLAG_BASIC_EXPLOSIVES));
+        registerBlock(ID_REDSTONE_TNT, () -> new TNTBlockCoFH(PhytoTNTEntity::new, create(Material.TNT, MaterialColor.RED).hardnessAndResistance(0.0F).sound(SoundType.PLANT)), getFlag(FLAG_BASIC_EXPLOSIVES));
+        registerBlock(ID_GLOWSTONE_TNT, () -> new TNTBlockCoFH(PhytoTNTEntity::new, create(Material.TNT, MaterialColor.YELLOW).hardnessAndResistance(0.0F).sound(SoundType.PLANT)), getFlag(FLAG_BASIC_EXPLOSIVES));
+        registerBlock(ID_ENDER_TNT, () -> new TNTBlockCoFH(PhytoTNTEntity::new, create(Material.TNT, MaterialColor.GREEN).hardnessAndResistance(0.0F).sound(SoundType.PLANT)), getFlag(FLAG_BASIC_EXPLOSIVES));
 
         registerBlock(ID_PHYTO_TNT, () -> new TNTBlockCoFH(PhytoTNTEntity::new, create(Material.TNT, MaterialColor.GREEN).hardnessAndResistance(0.0F).sound(SoundType.PLANT)), getFlag(FLAG_PHYTOGRO_EXPLOSIVES));
 

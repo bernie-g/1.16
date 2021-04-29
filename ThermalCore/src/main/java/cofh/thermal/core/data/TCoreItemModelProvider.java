@@ -136,7 +136,7 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
 
         handheld(reg.getSup("wrench"), TOOLS);
         handheld(reg.getSup("redprint"), TOOLS);
-        handheld(reg.getSup("xp_crystal"), TOOLS);
+        // handheld(reg.getSup("xp_crystal"), TOOLS);
         generated(reg.getSup("rf_potato"), TOOLS);
         generated(reg.getSup("lock"), TOOLS);
         generated(reg.getSup("phytogro"), TOOLS);

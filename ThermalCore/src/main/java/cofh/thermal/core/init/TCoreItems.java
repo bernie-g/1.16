@@ -227,7 +227,7 @@ public class TCoreItems {
                 return new SlimeGrenadeEntity(world, posX, posY, posZ);
             }
 
-        }, new Item.Properties().group(group).maxStackSize(16)));
+        }, new Item.Properties().group(group).maxStackSize(16)).setShowInGroups(getFlag(FLAG_BASIC_EXPLOSIVES)));
         registerItem("redstone_grenade", () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
 
             @Override
@@ -242,7 +242,7 @@ public class TCoreItems {
                 return new RedstoneGrenadeEntity(world, posX, posY, posZ);
             }
 
-        }, new Item.Properties().group(group).maxStackSize(16)));
+        }, new Item.Properties().group(group).maxStackSize(16)).setShowInGroups(getFlag(FLAG_BASIC_EXPLOSIVES)));
         registerItem("glowstone_grenade", () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
 
             @Override
@@ -257,7 +257,7 @@ public class TCoreItems {
                 return new GlowstoneGrenadeEntity(world, posX, posY, posZ);
             }
 
-        }, new Item.Properties().group(group).maxStackSize(16)));
+        }, new Item.Properties().group(group).maxStackSize(16)).setShowInGroups(getFlag(FLAG_BASIC_EXPLOSIVES)));
         registerItem("ender_grenade", () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
 
             @Override
@@ -272,7 +272,7 @@ public class TCoreItems {
                 return new EnderGrenadeEntity(world, posX, posY, posZ);
             }
 
-        }, new Item.Properties().group(group).maxStackSize(16)));
+        }, new Item.Properties().group(group).maxStackSize(16)).setShowInGroups(getFlag(FLAG_BASIC_EXPLOSIVES)));
 
         registerItem("phyto_grenade", () -> new GrenadeItem(new GrenadeItem.IGrenadeFactory<AbstractGrenadeEntity>() {
 
