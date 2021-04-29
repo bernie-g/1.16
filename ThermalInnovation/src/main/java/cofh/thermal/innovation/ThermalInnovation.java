@@ -38,6 +38,7 @@ public class ThermalInnovation {
 
         setFlag(FLAG_TOOL_COMPONENTS, true);
 
+        setFlag(FLAG_BASIC_EXPLOSIVES, true);
         setFlag(FLAG_ELEMENTAL_EXPLOSIVES, true);
 
         setFlag(ID_DEVICE_POTION_DIFFUSER, true);

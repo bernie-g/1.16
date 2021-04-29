@@ -161,6 +161,38 @@ public class TLocRecipeProvider extends RecipeProviderCoFH {
                 .addCriterion("has_" + name(Items.MINECART), hasItem(Items.MINECART))
                 .build(consumer);
 
+        ShapedRecipeBuilder.shapedRecipe(ITEMS.get(ID_SLIME_TNT_CART))
+                .key('A', ITEMS.get(ID_SLIME_TNT))
+                .key('B', Items.MINECART)
+                .patternLine("A")
+                .patternLine("B")
+                .addCriterion("has_" + name(Items.MINECART), hasItem(Items.MINECART))
+                .build(withConditions(consumer).flag(FLAG_BASIC_EXPLOSIVES));
+
+        ShapedRecipeBuilder.shapedRecipe(ITEMS.get(ID_REDSTONE_TNT_CART))
+                .key('A', ITEMS.get(ID_REDSTONE_TNT))
+                .key('B', Items.MINECART)
+                .patternLine("A")
+                .patternLine("B")
+                .addCriterion("has_" + name(Items.MINECART), hasItem(Items.MINECART))
+                .build(withConditions(consumer).flag(FLAG_BASIC_EXPLOSIVES));
+
+        ShapedRecipeBuilder.shapedRecipe(ITEMS.get(ID_GLOWSTONE_TNT_CART))
+                .key('A', ITEMS.get(ID_GLOWSTONE_TNT))
+                .key('B', Items.MINECART)
+                .patternLine("A")
+                .patternLine("B")
+                .addCriterion("has_" + name(Items.MINECART), hasItem(Items.MINECART))
+                .build(withConditions(consumer).flag(FLAG_BASIC_EXPLOSIVES));
+
+        ShapedRecipeBuilder.shapedRecipe(ITEMS.get(ID_ENDER_TNT_CART))
+                .key('A', ITEMS.get(ID_ENDER_TNT))
+                .key('B', Items.MINECART)
+                .patternLine("A")
+                .patternLine("B")
+                .addCriterion("has_" + name(Items.MINECART), hasItem(Items.MINECART))
+                .build(withConditions(consumer).flag(FLAG_BASIC_EXPLOSIVES));
+
         ShapedRecipeBuilder.shapedRecipe(ITEMS.get(ID_PHYTO_TNT_CART))
                 .key('A', ITEMS.get(ID_PHYTO_TNT))
                 .key('B', Items.MINECART)

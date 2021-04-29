@@ -24,6 +24,11 @@ public class TLocItems {
 
         ITEMS.register(ID_UNDERWATER_CART, () -> new UnderwaterMinecartItem(new Item.Properties().group(group)));
 
+        ITEMS.register(ID_SLIME_TNT_CART, () -> new MinecartItemCoFH(SlimeTNTMinecartEntity::new, new Item.Properties().group(group)).setShowInGroups(getFlag(FLAG_BASIC_EXPLOSIVES)));
+        ITEMS.register(ID_REDSTONE_TNT_CART, () -> new MinecartItemCoFH(RedstoneTNTMinecartEntity::new, new Item.Properties().group(group)).setShowInGroups(getFlag(FLAG_BASIC_EXPLOSIVES)));
+        ITEMS.register(ID_GLOWSTONE_TNT_CART, () -> new MinecartItemCoFH(GlowstoneTNTMinecartEntity::new, new Item.Properties().group(group)).setShowInGroups(getFlag(FLAG_BASIC_EXPLOSIVES)));
+        ITEMS.register(ID_ENDER_TNT_CART, () -> new MinecartItemCoFH(EnderTNTMinecartEntity::new, new Item.Properties().group(group)).setShowInGroups(getFlag(FLAG_BASIC_EXPLOSIVES)));
+
         ITEMS.register(ID_PHYTO_TNT_CART, () -> new MinecartItemCoFH(PhytoTNTMinecartEntity::new, new Item.Properties().group(group)).setShowInGroups(getFlag(FLAG_PHYTOGRO_EXPLOSIVES)));
 
         ITEMS.register(ID_FIRE_TNT_CART, () -> new MinecartItemCoFH(FireTNTMinecartEntity::new, new Item.Properties().group(group)).setShowInGroups(getFlag(FLAG_ELEMENTAL_EXPLOSIVES)));

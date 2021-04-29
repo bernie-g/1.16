@@ -77,6 +77,11 @@ public class ThermalLocomotion {
 
         RenderingRegistry.registerEntityRenderingHandler(UNDERWATER_CART_ENTITY, UnderwaterMinecartRenderer::new);
 
+        RenderingRegistry.registerEntityRenderingHandler(SLIME_TNT_CART_ENTITY, TNTMinecartRendererCoFH::new);
+        RenderingRegistry.registerEntityRenderingHandler(REDSTONE_TNT_CART_ENTITY, TNTMinecartRendererCoFH::new);
+        RenderingRegistry.registerEntityRenderingHandler(GLOWSTONE_TNT_CART_ENTITY, TNTMinecartRendererCoFH::new);
+        RenderingRegistry.registerEntityRenderingHandler(ENDER_TNT_CART_ENTITY, TNTMinecartRendererCoFH::new);
+
         RenderingRegistry.registerEntityRenderingHandler(PHYTO_TNT_CART_ENTITY, TNTMinecartRendererCoFH::new);
 
         RenderingRegistry.registerEntityRenderingHandler(FIRE_TNT_CART_ENTITY, TNTMinecartRendererCoFH::new);

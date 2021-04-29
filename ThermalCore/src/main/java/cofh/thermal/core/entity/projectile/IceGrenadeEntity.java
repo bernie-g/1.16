@@ -21,7 +21,6 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-
 import java.util.List;
 
 import static cofh.lib.util.references.CoreReferences.CHILLED;

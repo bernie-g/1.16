@@ -211,6 +211,11 @@ public class ThermalCore {
 
         RenderingRegistry.registerEntityRenderingHandler(NUKE_GRENADE_ENTITY, SpriteRendererCoFH::new);
 
+        RenderingRegistry.registerEntityRenderingHandler(SLIME_TNT_ENTITY, TNTRendererCoFH::new);
+        RenderingRegistry.registerEntityRenderingHandler(REDSTONE_TNT_ENTITY, TNTRendererCoFH::new);
+        RenderingRegistry.registerEntityRenderingHandler(GLOWSTONE_TNT_ENTITY, TNTRendererCoFH::new);
+        RenderingRegistry.registerEntityRenderingHandler(ENDER_TNT_ENTITY, TNTRendererCoFH::new);
+
         RenderingRegistry.registerEntityRenderingHandler(PHYTO_TNT_ENTITY, TNTRendererCoFH::new);
 
         RenderingRegistry.registerEntityRenderingHandler(FIRE_TNT_ENTITY, TNTRendererCoFH::new);

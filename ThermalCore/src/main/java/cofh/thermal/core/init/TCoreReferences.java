@@ -76,6 +76,15 @@ public class TCoreReferences {
     @ObjectHolder(ID_NUKE_GRENADE)
     public static final EntityType<LightningGrenadeEntity> NUKE_GRENADE_ENTITY = null;
 
+    @ObjectHolder(ID_SLIME_TNT)
+    public static final EntityType<SlimeTNTEntity> SLIME_TNT_ENTITY = null;
+    @ObjectHolder(ID_REDSTONE_TNT)
+    public static final EntityType<RedstoneTNTEntity> REDSTONE_TNT_ENTITY = null;
+    @ObjectHolder(ID_GLOWSTONE_TNT)
+    public static final EntityType<GlowstoneTNTEntity> GLOWSTONE_TNT_ENTITY = null;
+    @ObjectHolder(ID_ENDER_TNT)
+    public static final EntityType<EnderTNTEntity> ENDER_TNT_ENTITY = null;
+
     @ObjectHolder(ID_PHYTO_TNT)
     public static final EntityType<PhytoTNTEntity> PHYTO_TNT_ENTITY = null;
 

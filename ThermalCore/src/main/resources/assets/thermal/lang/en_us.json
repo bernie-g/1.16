@@ -562,8 +562,12 @@
 
   "block.thermal.earth_tnt": "Tectonic Explosive",
   "block.thermal.earth_tnt.desc": "Breaks apart rocks and earth. Very effective for mining.",
+  "block.thermal.ender_tnt": "Ender Explosive",
+  "block.thermal.ender_tnt.desc": "TODO",
   "block.thermal.fire_tnt": "Inferno Explosive",
   "block.thermal.fire_tnt.desc": "Ignites a large area.",
+  "block.thermal.glowstone_tnt": "Glowstone Explosive",
+  "block.thermal.glowstone_tnt.desc": "TODO",
   "block.thermal.ice_tnt": "Glacial Explosive",
   "block.thermal.ice_tnt.desc": "Freezes a large area.",
   "block.thermal.lightning_tnt": "Fulminating Explosive",
@@ -572,6 +576,10 @@
   "block.thermal.nuke_tnt.desc": "Do not stand anywhere close to this.",
   "block.thermal.phyto_tnt": "PNT",
   "block.thermal.phyto_tnt.desc": "Spreads Phyto-Gro in a large area. Not throwable.",
+  "block.thermal.redstone_tnt": "Redstone Explosive",
+  "block.thermal.redstone_tnt.desc": "TODO",
+  "block.thermal.slime_tnt": "Slime Explosive",
+  "block.thermal.slime_tnt.desc": "TODO",
 
   "_comment": "========================================================================================================",
   "_comment": "Thermal Core - Vanilla",
@@ -918,6 +926,11 @@
   "block.thermal.prismarine_rail": "Prismarine Rail",
 
   "item.thermal.underwater_minecart": "Underwater Minecart",
+
+  "item.thermal.slime_tnt_minecart": "Minecart with Slime Explosive",
+  "item.thermal.redstone_tnt_minecart": "Minecart with Redstone Explosive",
+  "item.thermal.glowstone_tnt_minecart": "Minecart with Glowstone Explosive",
+  "item.thermal.ender_tnt_minecart": "Minecart with Ender Explosive",
 
   "item.thermal.phyto_tnt_minecart": "Minecart with PNT",
 

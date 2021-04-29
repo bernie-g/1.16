@@ -23,13 +23,11 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-
 import java.util.List;
 
 import static cofh.lib.util.references.CoreReferences.ENDERFERENCE;
 import static cofh.thermal.core.init.TCoreReferences.ENDER_GRENADE_ENTITY;
 import static cofh.thermal.core.init.TCoreReferences.ENDER_GRENADE_ITEM;
-import static net.minecraft.potion.Effects.GLOWING;
 
 public class EnderGrenadeEntity extends AbstractGrenadeEntity {
 

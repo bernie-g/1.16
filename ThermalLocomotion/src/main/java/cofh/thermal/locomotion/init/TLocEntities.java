@@ -17,6 +17,11 @@ public class TLocEntities {
 
         ENTITIES.register(ID_UNDERWATER_CART, () -> EntityType.Builder.<UnderwaterMinecartEntity>create(UnderwaterMinecartEntity::new, EntityClassification.MISC).size(0.98F, 0.7F).build(ID_UNDERWATER_CART));
 
+        ENTITIES.register(ID_SLIME_TNT_CART, () -> EntityType.Builder.<SlimeTNTMinecartEntity>create(SlimeTNTMinecartEntity::new, EntityClassification.MISC).size(0.98F, 0.7F).build(ID_SLIME_TNT_CART));
+        ENTITIES.register(ID_REDSTONE_TNT_CART, () -> EntityType.Builder.<RedstoneTNTMinecartEntity>create(RedstoneTNTMinecartEntity::new, EntityClassification.MISC).size(0.98F, 0.7F).build(ID_REDSTONE_TNT_CART));
+        ENTITIES.register(ID_GLOWSTONE_TNT_CART, () -> EntityType.Builder.<GlowstoneTNTMinecartEntity>create(GlowstoneTNTMinecartEntity::new, EntityClassification.MISC).size(0.98F, 0.7F).build(ID_GLOWSTONE_TNT_CART));
+        ENTITIES.register(ID_ENDER_TNT_CART, () -> EntityType.Builder.<EnderTNTMinecartEntity>create(EnderTNTMinecartEntity::new, EntityClassification.MISC).size(0.98F, 0.7F).build(ID_ENDER_TNT_CART));
+
         ENTITIES.register(ID_PHYTO_TNT_CART, () -> EntityType.Builder.<PhytoTNTMinecartEntity>create(PhytoTNTMinecartEntity::new, EntityClassification.MISC).size(0.98F, 0.7F).build(ID_PHYTO_TNT_CART));
 
         ENTITIES.register(ID_FIRE_TNT_CART, () -> EntityType.Builder.<FireTNTMinecartEntity>create(FireTNTMinecartEntity::new, EntityClassification.MISC).size(0.98F, 0.7F).build(ID_FIRE_TNT_CART));

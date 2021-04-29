@@ -7,6 +7,7 @@ import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.FluidTagsProvider;
 import net.minecraft.data.ItemTagsProvider;
+import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -34,6 +35,12 @@ public class TCoreTagsProvider {
         protected void registerTags() {
 
             getOrCreateBuilder(BlockTagsCoFH.HARDENED_GLASS).add(
+                    BLOCKS.get(ID_OBSIDIAN_GLASS),
+                    BLOCKS.get(ID_SIGNALUM_GLASS),
+                    BLOCKS.get(ID_LUMIUM_GLASS),
+                    BLOCKS.get(ID_ENDERIUM_GLASS));
+
+            getOrCreateBuilder(BlockTags.IMPERMEABLE).add(
                     BLOCKS.get(ID_OBSIDIAN_GLASS),
                     BLOCKS.get(ID_SIGNALUM_GLASS),
                     BLOCKS.get(ID_LUMIUM_GLASS),

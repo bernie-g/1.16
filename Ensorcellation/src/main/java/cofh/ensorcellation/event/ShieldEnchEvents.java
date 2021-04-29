@@ -23,8 +23,7 @@ import net.minecraftforge.fml.common.Mod;
 
 import static cofh.lib.util.Utils.getItemEnchantmentLevel;
 import static cofh.lib.util.constants.Constants.*;
-import static cofh.lib.util.references.EnsorcIDs.ID_PHALANX;
-import static cofh.lib.util.references.EnsorcIDs.ID_REACH;
+import static cofh.lib.util.references.EnsorcIDs.*;
 import static cofh.lib.util.references.EnsorcReferences.*;
 import static net.minecraft.enchantment.Enchantments.THORNS;
 import static net.minecraft.entity.ai.attributes.AttributeModifier.Operation.ADDITION;
@@ -104,7 +103,7 @@ public class ShieldEnchEvents {
             int encBulwark = getItemEnchantmentLevel(BULWARK, stack);
             if (knockbackResAttr != null) {
                 if (encBulwark > 0) {
-                    knockbackResAttr.applyNonPersistentModifier(new AttributeModifier(UUID_ENCH_BULWARK_KNOCKBACK_RESISTANCE, ID_REACH, 1.0D, ADDITION));
+                    knockbackResAttr.applyNonPersistentModifier(new AttributeModifier(UUID_ENCH_BULWARK_KNOCKBACK_RESISTANCE, ID_BULWARK, 1.0D, ADDITION));
                 }
             }
             // PHALANX

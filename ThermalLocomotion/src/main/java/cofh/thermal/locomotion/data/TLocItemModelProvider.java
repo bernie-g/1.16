@@ -24,6 +24,11 @@ public class TLocItemModelProvider extends ItemModelProviderCoFH {
 
         generated(reg.getSup(ID_UNDERWATER_CART), MINECARTS);
 
+        generated(reg.getSup(ID_SLIME_TNT_CART), MINECARTS);
+        generated(reg.getSup(ID_REDSTONE_TNT_CART), MINECARTS);
+        generated(reg.getSup(ID_GLOWSTONE_TNT_CART), MINECARTS);
+        generated(reg.getSup(ID_ENDER_TNT_CART), MINECARTS);
+
         generated(reg.getSup(ID_PHYTO_TNT_CART), MINECARTS);
 
         generated(reg.getSup(ID_FIRE_TNT_CART), MINECARTS);

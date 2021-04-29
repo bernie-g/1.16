@@ -63,6 +63,7 @@ public class ThermalFlags {
     public static String FLAG_COINS = "coins";
     public static String FLAG_PLATES = "plates";
 
+    public static String FLAG_BASIC_EXPLOSIVES = "basic_explosives";
     public static String FLAG_PHYTOGRO_EXPLOSIVES = "phytogro_explosives";
     public static String FLAG_ELEMENTAL_EXPLOSIVES = "elemental_explosives";
     public static String FLAG_NUCLEAR_EXPLOSIVES = "nuclear_explosives";

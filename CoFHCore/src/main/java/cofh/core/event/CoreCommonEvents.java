@@ -1,7 +1,6 @@
 package cofh.core.event;
 
 import cofh.core.init.CoreConfig;
-import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.util.helpers.XpHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -9,7 +8,6 @@ import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
@@ -62,17 +60,15 @@ public class CoreCommonEvents {
         if (event.isCanceled()) {
             return;
         }
-        LivingEntity living = event.getEntityLiving();
-        if (living.isPotionActive(SLIMED)) {
-            Vector3d vector3d = living.getMotion();
-            System.out.println("called:" + living);
-            System.out.println(event.getDistance());
-            System.out.println(vector3d);
-            living.setMotion(vector3d.x, MathHelper.clamp(event.getDistance() * 0.2D, -vector3d.y, 0.8D), vector3d.z);
-            System.out.println(living.getMotion());
-            living.velocityChanged = true;
-            event.setDistance(0.0F);
-            event.setDamageMultiplier(0.0F);
+        if (event.getDistance() >= 3.0) {
+            LivingEntity living = event.getEntityLiving();
+            if (living.isPotionActive(SLIMED)) {
+                Vector3d motion = living.getMotion();
+                living.setMotion(motion.x, 0.08 * Math.sqrt(event.getDistance() / 0.08), motion.z);
+                living.velocityChanged = true;
+                event.setDistance(0.0F);
+                event.setDamageMultiplier(0.0F);
+            }
         }
     }
 

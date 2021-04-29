@@ -19,6 +19,15 @@ public class TLocReferences {
     @ObjectHolder(ID_UNDERWATER_CART)
     public static final EntityType<UnderwaterMinecartEntity> UNDERWATER_CART_ENTITY = null;
 
+    @ObjectHolder(ID_SLIME_TNT_CART)
+    public static final EntityType<SlimeTNTMinecartEntity> SLIME_TNT_CART_ENTITY = null;
+    @ObjectHolder(ID_REDSTONE_TNT_CART)
+    public static final EntityType<RedstoneTNTMinecartEntity> REDSTONE_TNT_CART_ENTITY = null;
+    @ObjectHolder(ID_GLOWSTONE_TNT_CART)
+    public static final EntityType<GlowstoneTNTMinecartEntity> GLOWSTONE_TNT_CART_ENTITY = null;
+    @ObjectHolder(ID_ENDER_TNT_CART)
+    public static final EntityType<EnderTNTMinecartEntity> ENDER_TNT_CART_ENTITY = null;
+
     @ObjectHolder(ID_PHYTO_TNT_CART)
     public static final EntityType<PhytoTNTMinecartEntity> PHYTO_TNT_CART_ENTITY = null;
 
@@ -38,6 +47,15 @@ public class TLocReferences {
     // region ITEMS
     @ObjectHolder(ID_UNDERWATER_CART)
     public static final Item UNDERWATER_CART_ITEM = null;
+
+    @ObjectHolder(ID_SLIME_TNT_CART)
+    public static final Item SLIME_TNT_CART_ITEM = null;
+    @ObjectHolder(ID_REDSTONE_TNT_CART)
+    public static final Item REDSTONE_TNT_CART_ITEM = null;
+    @ObjectHolder(ID_GLOWSTONE_TNT_CART)
+    public static final Item GLOWSTONE_TNT_CART_ITEM = null;
+    @ObjectHolder(ID_ENDER_TNT_CART)
+    public static final Item ENDER_TNT_CART_ITEM = null;
 
     @ObjectHolder(ID_PHYTO_TNT_CART)
     public static final Item PHYTO_TNT_CART_ITEM = null;

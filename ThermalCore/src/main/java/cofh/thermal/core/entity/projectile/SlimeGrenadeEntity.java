@@ -27,7 +27,7 @@ import static cofh.thermal.core.init.TCoreReferences.SLIME_GRENADE_ITEM;
 
 public class SlimeGrenadeEntity extends AbstractGrenadeEntity {
 
-    public static int effectDuration = 300;
+    public static int effectDuration = 600;
 
     public SlimeGrenadeEntity(EntityType<? extends ProjectileItemEntity> type, World worldIn) {
 
@@ -56,7 +56,6 @@ public class SlimeGrenadeEntity extends AbstractGrenadeEntity {
         if (Utils.isServerWorld(world)) {
             if (!this.isInWater()) {
                 affectNearbyEntities(this, world, this.getPosition(), radius, func_234616_v_());
-                // AreaUtils.transformSignalAir(this, world, this.getPosition(), radius);
                 makeAreaOfEffectCloud();
             }
             this.world.setEntityState(this, (byte) 3);
@@ -88,6 +87,7 @@ public class SlimeGrenadeEntity extends AbstractGrenadeEntity {
 
         for (LivingEntity mob : mobs) {
             mob.addPotionEffect(new EffectInstance(SLIMED, effectDuration, 0, false, true));
+            double mobDist = Math.sqrt(entity.getDistanceSq(entity));
         }
     }
 

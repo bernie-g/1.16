@@ -312,6 +312,11 @@ public class TCoreItemModelProvider extends ItemModelProviderCoFH {
 
     private void registerMiscBlocks(DeferredRegisterCoFH<Block> reg) {
 
+        blockItem(reg.getSup(ID_SLIME_TNT));
+        blockItem(reg.getSup(ID_REDSTONE_TNT));
+        blockItem(reg.getSup(ID_GLOWSTONE_TNT));
+        blockItem(reg.getSup(ID_ENDER_TNT));
+
         blockItem(reg.getSup(ID_PHYTO_TNT));
 
         blockItem(reg.getSup(ID_FIRE_TNT));
