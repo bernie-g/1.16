@@ -1,9 +1,12 @@
 package cofh.lib.item.impl;
 
 import cofh.lib.item.ICoFHItem;
+import net.minecraft.block.DispenserBlock;
+import net.minecraft.dispenser.BeehiveDispenseBehavior;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.ShearsItem;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldReader;
@@ -15,11 +18,12 @@ public class ShearsItemCoFH extends ShearsItem implements ICoFHItem {
     public ShearsItemCoFH(Properties builder) {
 
         super(builder);
+        DispenserBlock.registerDispenseBehavior(this, new BeehiveDispenseBehavior());
     }
 
     public ShearsItemCoFH(IItemTier tier, Properties builder) {
 
-        super(builder);
+        this(builder);
         setParams(tier);
     }
 

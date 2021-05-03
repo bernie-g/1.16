@@ -66,8 +66,7 @@ public class CoreCommonEvents {
                 Vector3d motion = living.getMotion();
                 living.setMotion(motion.x, 0.08 * Math.sqrt(event.getDistance() / 0.08), motion.z);
                 living.velocityChanged = true;
-                event.setDistance(0.0F);
-                event.setDamageMultiplier(0.0F);
+                event.setCanceled(true);
             }
         }
     }

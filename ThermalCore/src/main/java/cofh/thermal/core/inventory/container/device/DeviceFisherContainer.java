@@ -29,7 +29,7 @@ public class DeviceFisherContainer extends TileContainer {
                 addSlot(new SlotRemoveOnly(tileInv, 1 + i * 5 + j, 62 + j * 18, 17 + i * 18));
             }
         }
-        bindAugmentSlots(tileInv, 15, this.tile.augSize());
+        bindAugmentSlots(tileInv, 16, this.tile.augSize());
         bindPlayerInventory(inventory);
     }
 

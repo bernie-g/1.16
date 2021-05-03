@@ -141,20 +141,20 @@ public class CommonEvents {
         int encHunter = getHeldEnchantmentLevel(player, HUNTER);
         if (encHunter > 0 && entity instanceof AnimalEntity) {
 
-            LootTable loottable = entity.world.getServer().getLootTableManager().getLootTableFromLocation(entity.getLootTableResourceLocation());
-            LootContext.Builder builder = (new LootContext.Builder((ServerWorld) entity.world))
+            LootTable table = entity.world.getServer().getLootTableManager().getLootTableFromLocation(entity.getLootTableResourceLocation());
+            LootContext.Builder contextBuilder = (new LootContext.Builder((ServerWorld) entity.world))
                     .withRandom(entity.world.rand)
                     .withParameter(LootParameters.THIS_ENTITY, entity)
                     .withParameter(LootParameters.field_237457_g_, entity.getPositionVec())
                     .withParameter(LootParameters.DAMAGE_SOURCE, source)
                     .withNullableParameter(LootParameters.KILLER_ENTITY, source.getTrueSource())
                     .withNullableParameter(LootParameters.DIRECT_KILLER_ENTITY, source.getImmediateSource());
-            builder = builder.withParameter(LootParameters.LAST_DAMAGE_PLAYER, player).withLuck(player.getLuck());
-            loottable.generate(builder.build(LootParameterSets.ENTITY));
+            contextBuilder = contextBuilder.withParameter(LootParameters.LAST_DAMAGE_PLAYER, player).withLuck(player.getLuck());
+            table.generate(contextBuilder.build(LootParameterSets.ENTITY));
 
             for (int i = 0; i < encHunter; ++i) {
                 if (player.getRNG().nextInt(100) < HunterEnchantment.chance) {
-                    for (ItemStack stack : loottable.generate(builder.build(LootParameterSets.ENTITY))) {
+                    for (ItemStack stack : table.generate(contextBuilder.build(LootParameterSets.ENTITY))) {
                         ItemEntity drop = new ItemEntity(entity.world, entity.getPosX(), entity.getPosY(), entity.getPosZ(), stack);
                         event.getDrops().add(drop);
                     }
@@ -385,18 +385,18 @@ public class CommonEvents {
         if (encAngler > 0) {
             ItemStack fishingRod = player.getHeldItemMainhand();
 
-            LootContext.Builder builder = (new LootContext.Builder((ServerWorld) hook.world))
+            LootContext.Builder contextBuilder = (new LootContext.Builder((ServerWorld) hook.world))
                     .withParameter(LootParameters.field_237457_g_, hook.getPositionVec())
                     .withParameter(LootParameters.TOOL, fishingRod)
                     .withRandom(hook.world.rand)
                     .withLuck((float) hook.luck + player.getLuck());
-            builder.withParameter(LootParameters.KILLER_ENTITY, player).withParameter(LootParameters.THIS_ENTITY, hook);
-            LootTable loottable = hook.world.getServer().getLootTableManager().getLootTableFromLocation(LootTables.GAMEPLAY_FISHING);
-            List<ItemStack> list = loottable.generate(builder.build(LootParameterSets.FISHING));
+            contextBuilder.withParameter(LootParameters.KILLER_ENTITY, player).withParameter(LootParameters.THIS_ENTITY, hook);
+            LootTable table = hook.world.getServer().getLootTableManager().getLootTableFromLocation(LootTables.GAMEPLAY_FISHING);
+            List<ItemStack> list = table.generate(contextBuilder.build(LootParameterSets.FISHING));
 
             for (int i = 0; i < encAngler; ++i) {
                 if (player.getRNG().nextInt(100) < AnglerEnchantment.chance) {
-                    list.addAll(loottable.generate(builder.build(LootParameterSets.FISHING)));
+                    list.addAll(table.generate(contextBuilder.build(LootParameterSets.FISHING)));
                 }
             }
             for (ItemStack stack : list) {

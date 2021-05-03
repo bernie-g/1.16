@@ -1,7 +1,10 @@
 package cofh.thermal.core.tileentity.device;
 
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.inventory.SimpleItemHandler;
 import cofh.lib.util.Utils;
+import cofh.lib.util.helpers.AugmentDataHelper;
+import cofh.lib.util.helpers.InventoryHelper;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.lib.xp.XpStorage;
 import cofh.thermal.core.inventory.container.device.DeviceFisherContainer;
@@ -12,31 +15,43 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
+import net.minecraft.loot.LootContext;
+import net.minecraft.loot.LootParameterSets;
+import net.minecraft.loot.LootTable;
+import net.minecraft.loot.LootTables;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.BiomeDictionary;
 
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
 import static cofh.lib.util.StorageGroup.INPUT;
 import static cofh.lib.util.StorageGroup.OUTPUT;
-import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_TYPE_UPGRADE;
+import static cofh.lib.util.constants.NBTTags.*;
+import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.thermal.core.init.TCoreReferences.DEVICE_FISHER_TILE;
 import static cofh.thermal.lib.common.ThermalAugmentRules.createAllowValidator;
 import static cofh.thermal.lib.common.ThermalConfig.deviceAugments;
 
 public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEntity {
 
-    public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE);
+    public static final BiPredicate<ItemStack, List<ItemStack>> AUG_VALIDATOR = createAllowValidator(TAG_AUGMENT_TYPE_UPGRADE, TAG_AUGMENT_TYPE_AREA_EFFECT, TAG_AUGMENT_TYPE_FILTER);
 
     protected static final int TIME_CONSTANT = 7200;
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item));
+    protected SimpleItemHandler internalHandler;
 
     protected boolean cached;
     protected boolean valid;
+
+    protected static final int RADIUS = 2;
+    public int radius = RADIUS;
 
     protected int process = TIME_CONSTANT / 2;
 
@@ -51,6 +66,7 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
 
         addAugmentSlots(deviceAugments);
         initHandlers();
+        internalHandler = new SimpleItemHandler(this, inventory.getOutputSlots());
     }
 
     @Override
@@ -109,16 +125,18 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
         process = getTimeConstant();
 
         if (valid) {
-            // TODO: Catch fish?
+            LootTable table = world.getServer().getLootTableManager().getLootTableFromLocation(LootTables.GAMEPLAY_FISHING_FISH);
+            LootContext.Builder contextBuilder = new LootContext.Builder((ServerWorld) world).withRandom(world.rand);
 
-            //            LootContext.Builder builder = (new LootContext.Builder((ServerWorld) world))
-            //                    .withParameter(LootParameters.field_237457_g_, hook.getPositionVec())
-            //                    .withParameter(LootParameters.TOOL, fishingRod)
-            //                    .withRandom(hook.world.rand)
-            //                    .withLuck((float) hook.luck + player.getLuck());
-            //            builder.withParameter(LootParameters.KILLER_ENTITY, player).withParameter(LootParameters.THIS_ENTITY, hook);
-            //            LootTable loottable = hook.world.getServer().getLootTableManager().getLootTableFromLocation(LootTables.GAMEPLAY_FISHING);
-            //            List<ItemStack> list = loottable.generate(builder.build(LootParameterSets.FISHING));
+            boolean caught = false;
+            for (int i = 0; i < baseMod; ++i) {
+                for (ItemStack stack : table.generate(contextBuilder.build(LootParameterSets.EMPTY))) {
+                    caught |= InventoryHelper.insertStackIntoInventory(internalHandler, stack, false).isEmpty();
+                }
+            }
+            if (xpStorageFeature && caught) {
+                xpStorage.receiveXp(1 + world.rand.nextInt(3), false);
+            }
         }
     }
 
@@ -136,7 +154,7 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
             return TIME_CONSTANT;
         }
         int constant = TIME_CONSTANT;
-        Iterable<BlockPos> area = BlockPos.getAllInBoxMutable(pos.add(-2, -1, -2), pos.add(2, 0, 2));
+        Iterable<BlockPos> area = BlockPos.getAllInBoxMutable(pos.add(-radius, 1 - radius, -radius), pos.add(radius, 0, radius));
         for (BlockPos scan : area) {
             FluidState state = world.getFluidState(scan);
             if (state.getFluid().equals(Fluids.WATER)) {
@@ -156,11 +174,31 @@ public class DeviceFisherTile extends DeviceTileBase implements ITickableTileEnt
         if (isRaining) {
             constant /= 2;
         }
-        return MathHelper.clamp(constant, TIME_CONSTANT / 12, TIME_CONSTANT);
+        return MathHelper.clamp(constant, TIME_CONSTANT / 20, TIME_CONSTANT);
     }
     // endregion
 
     // region AUGMENTS
+    @Override
+    protected Predicate<ItemStack> augValidator() {
 
+        return item -> AugmentDataHelper.hasAugmentData(item) && AUG_VALIDATOR.test(item, getAugmentsAsList());
+    }
+
+    @Override
+    protected void resetAttributes() {
+
+        super.resetAttributes();
+
+        radius = RADIUS;
+    }
+
+    @Override
+    protected void setAttributesFromAugment(CompoundNBT augmentData) {
+
+        super.setAttributesFromAugment(augmentData);
+
+        radius += getAttributeMod(augmentData, TAG_AUGMENT_RADIUS);
+    }
     // endregion
 }
